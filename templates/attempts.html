@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block extrahead %}
+	<meta http-equiv="refresh" content="5">
+{% endblock %}
+
+{% block content %}
+
+<center>
+
+<h2>Forsøk</h2>
+
+<table>
+	<tr>
+		<th>Hvem</th>
+		<th>Tid</th>
+		<th>Level</th>
+		<th>Forsøk</th>
+		<th>Riktig?</th>
+	</tr>
+	{% for a in attempts %}
+	<tr>
+		<td>{{a.user.username}} ({{s.user.first_name}} {{s.user.last_name}})</td>
+		<td>{{a.time}}</td>
+		<td>{{a.level}}</td>
+		<td>{{a.answer}}</td>
+		<td>{{a.correct|yesno}}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+</center>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from challenge.core.common import prtr
 
-from challenge.levels.models import Level, Score
+from challenge.levels.models import Level, Score, Attempt
 
 from django.http import HttpResponseRedirect, Http404
 
@@ -32,20 +32,29 @@ def index(request):
 
 	if request.method == "POST":
 		answer = unicode(request.POST['answer']).upper()
+		attempt = Attempt (user=user, level=level, answer=answer)
 		if not level.multianswer:
 			if answer == unicode(level.answer).upper():
 				score.max_level += 1
 				score.save()
+				attempt.correct = True
+				attempt.save ()
 				return HttpResponseRedirect('/')
 			else:
+				attempt.correct = False
+				attempt.save ()
 				c['error'] = 'Feil svar! Prøv igjen :-D'
 		else:
 			for level_answer in unicode(level.answer).split('||'):
 				if answer == unicode(level_answer).upper():
 					score.max_level += 1
 					score.save()
+					attempt.correct = True
+					attempt.save ()
 					return HttpResponseRedirect('/')
 			c['error'] = 'Feil svar! Prøv igjen :-D'
+			attempt.correct = False
+			attempt.save ()
 			
 	c['level'] = level
 

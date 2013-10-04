@@ -17,4 +17,6 @@ urlpatterns = patterns('',
 	(r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
 	(r'^register/$', 'challenge.core.views.register'),
 	(r'^score/$', 'challenge.stats.views.score'),
+	(r'^attempts/$', 'challenge.stats.views.attempts'),
+	
 )

@@ -19,3 +19,10 @@ class Score(models.Model):
 	user = models.ForeignKey(User, unique=True, editable=False)
 	max_level = models.IntegerField()
 	updated = models.DateTimeField(auto_now=True)
+
+class Attempt(models.Model):
+	user = models.ForeignKey (User)
+	level = models.ForeignKey (Level)
+	answer = models.TextField ()
+	correct = models.BooleanField ()
+	time = models.DateTimeField (auto_now=True)
