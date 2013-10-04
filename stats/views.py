@@ -20,6 +20,6 @@ def score (request):
 @user_passes_test(lambda u: u.is_superuser)
 def attempts (request):
 	c = {}
-	c['attempts'] = Attempt.objects.all()
+	c['attempts'] = Attempt.objects.order_by('-pk')
 
 	return prtr ("attempts.html", c, request)
