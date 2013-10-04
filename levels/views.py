@@ -6,12 +6,15 @@ from challenge.core.common import prtr
 
 from challenge.levels.models import Level, Score
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 
 @login_required
 def index(request):
 	c = {}
-	end_level = Level.objects.latest('pk')
+	try:
+		end_level = Level.objects.latest('pk')
+	except Level.DoesNotExist:
+		raise Http404
 
 	user = request.user
 
