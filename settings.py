@@ -3,7 +3,7 @@
 # for dynamic settings
 import os
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -44,7 +44,6 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(os.getcwd(), "media")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -93,6 +92,7 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
 	 os.path.join(PROJECT_DIR, "templates"),
 )
+MEDIA_ROOT = os.path.join(PROJECT_DIR, "media/")
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, "static/")
 STATIC_URL = '/static/'

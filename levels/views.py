@@ -16,6 +16,16 @@ def index(request):
 	except Level.DoesNotExist:
 		raise Http404
 
+
+	from challenge.core.models import Config
+	try:
+		config = Config.objects.get(pk=1)
+	except Config.DoesNotExist:
+		return prtr ("closed.html", c, request)
+	c['config'] = config
+	if not config.active:
+		return prtr ("closed.html", c, request)
+
 	user = request.user
 
 	try:

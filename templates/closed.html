@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block extrahead %}
+	<meta http-equiv="refresh" content="15">
+{% endblock %}
+
+
+{% block content %}
+
+<center>
+{% autoescape off %}
+{{config.welcometext}}
+{% endautoescape %}
+
+</center>
+{% endblock %}
