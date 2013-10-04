@@ -83,7 +83,7 @@ INSTALLED_APPS = (
 	 'django.contrib.staticfiles',
 	 'challenge.levels',
 	 'challenge.core',
-
+	 'challenge.stats',
 )
 
 PROJECT_DIR = os.path.dirname(__file__)

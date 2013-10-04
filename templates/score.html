@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block extrahead %}
+	<meta http-equiv="refresh" content="5">
+{% endblock %}
+
+{% block content %}
+
+<center>
+
+<h2>Score</h2>
+
+<table>
+	<tr>
+		<th>Hvem</th>
+		<th>Level</th>
+		<th>Tid</th>
+	</tr>
+	{% for s in score %}
+	<tr>
+		<td>{{s.user.username}} ({{s.user.first_name}} {{s.user.last_name}})</td>
+		<td>{{s.max_level}}</td>
+		<td>{{s.updated}}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+</center>
+{% endblock %}

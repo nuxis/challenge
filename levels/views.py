@@ -51,6 +51,7 @@ def index(request):
 
 	return prtr("levels.html", c, request)
 
+@login_required
 def done(request):
 	c = {}
 
