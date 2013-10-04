@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+
+{% if form.errors %}
+<div class="error">
+	<p class="error">Feil brukernavn og/eller passord. Prøv på nytt.</p>
+</div>
+{% endif %}
+
+<form method='POST' action="{% url django.contrib.auth.views.login %}">
+
+	{% csrf_token %}
+
+	<input type='hidden' name='next' value='{{next}}' />
+
+	<table class='login'>
+		<tr>
+			<td>{{ form.username.label_tag }}</td>
+			<td>{{ form.username }}</td>
+		</tr>
+		<tr>
+			<td>{{ form.password.label_tag }}</td>
+			<td>{{ form.password }}</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<input type="submit" class="width_submit" value="Logg inn" />
+</form>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<form method='GET' action="{% url challenge.core.views.register %}">
+				<input type="submit" class="width_submit" value="Registrer deg" />
+				</form>
+			</td>
+		</tr>
+	</table>
+
+
+{% endblock %}

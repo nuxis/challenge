@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<center>
+
+<h2>Ferdig?!</h2>
+
+
+
+<p>Nå lurer du vel på om du er førstemann? Det får du nok ikke vite her! :-P</p>
+
+<table>
+	<tr>
+		<th>Level</th>
+		<th>Tid</th>
+	</tr>
+	<tr>
+		<td>{{score.max_level}}</td>
+		<td>{{score.updated}}</td>
+	</tr>
+</table>
+
+
+</center>
+{% endblock %}

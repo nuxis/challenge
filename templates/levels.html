@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}
+
+{% block style %}
+{% if level.css %}
+<style>{{level.css}}</style>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<center>
+
+<h2>Level {{level.pk}}</h2>
+
+
+{% if error %}
+<div class="error">
+	<p>{{error}}</p>
+</div>
+{% endif %}
+
+
+<p>{% autoescape off %}{{level.question}}{% endautoescape %}</p>
+
+{% if level.sourcehint %}
+<!-- {{level.sourcehint}}  -->
+{% endif %}
+
+{% if level.imageurl %}
+<img src="{{level.imageurl}}" />
+{% endif %}
+
+<form action="." method="POST">
+<table style="width: 40%;">
+	<tr>
+		<td>
+			<input style="width: 99%;" type="text" name="answer" value="" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% if level.buttontext %}
+			<input type="submit" value="{{ level.buttontext }}" style="width: 100%;" />
+			{% else %}
+			<input type="submit" value="Prøv lykken ;-)" style="width: 100%;" />
+			{% endif %}
+		</td>
+	</tr>
+</table>
+</form>
+
+</center>
+{% endblock %}

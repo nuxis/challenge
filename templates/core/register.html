@@ -1,0 +1,70 @@
+{% extends "core/base.html" %}
+
+
+{% block content %}
+
+<h2>Registrer deg!</h2>
+
+{% if user_exists %}
+<div class="error">
+	<p>Det finnes allerede en bruker med dette nicket</p>
+</div>
+{% endif%}
+{% if password_mismatch %}
+<div class="error">
+	<p>Passordene du skrev inn stemte ikke overens</p>
+</div>
+{% endif%}
+{% if error %}
+<div class="error">
+	<p>Noe gikk galt, se over informasjonen nedenfor og prøv igjen</p>
+</div>
+{% endif%}
+
+<form action="." method="POST">
+
+<table class="login">
+
+	<tr>
+		<td>{{form.first_name.label}}</td>
+		<td>{{form.first_name}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{{form.last_name.label}}</td>
+		<td>{{form.last_name}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{{form.username.label}}</td>
+		<td>{{form.username}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{{form.email.label}}</td>
+		<td>{{form.email}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{{form.password.label}}</td>
+		<td>{{form.password}}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>{{form.password2.label}}</td>
+		<td>{{form.password2}}</td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td colspan=3>
+			<input type="submit" value="Registrer deg" />
+		</td>
+	</tr>
+</table>
+
+
+</form>
+
+
+{% endblock %}

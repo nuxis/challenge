@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+
+from django.contrib.auth.decorators import login_required
+
+from challenge.core.common import prtr
+
+from challenge.levels.models import Level, Score
+
+from django.http import HttpResponseRedirect
+
+@login_required
+def index(request):
+	c = {}
+	end_level = Level.objects.latest('pk')
+
+	user = request.user
+
+	try:
+		score = Score.objects.get(user=user)
+	except:
+		score = Score(user=user, max_level=0)
+
+	
+	if score.max_level == end_level.pk:
+		return HttpResponseRedirect('/done/')
+
+	level = score.max_level + 1
+	level = Level.objects.get(pk=level)
+
+	if request.method == "POST":
+		answer = unicode(request.POST['answer']).upper()
+		if not level.multianswer:
+			if answer == unicode(level.answer).upper():
+				score.max_level += 1
+				score.save()
+				return HttpResponseRedirect('/')
+			else:
+				c['error'] = 'Feil svar! Prøv igjen :-D'
+		else:
+			for level_answer in unicode(level.answer).split('||'):
+				if answer == unicode(level_answer).upper():
+					score.max_level += 1
+					score.save()
+					return HttpResponseRedirect('/')
+			c['error'] = 'Feil svar! Prøv igjen :-D'
+			
+	c['level'] = level
+
+	return prtr("levels.html", c, request)
+
+def done(request):
+	c = {}
+
+	try:
+		score = Score.objects.get(user=request.user)
+	except:
+		return HttpResponseRedirect('/')
+		
+
+	end_level = Level.objects.latest('pk')
+	if score.max_level == end_level.pk:
+			score = Score.objects.get(user=request.user)
+			c['score'] = score
+
+			return prtr ("done.html", c, request)
+	else:
+		return HttpResponseRedirect('/')
