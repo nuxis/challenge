@@ -8,7 +8,10 @@
 	<p class="error">Feil brukernavn og/eller passord. Prøv på nytt.</p>
 </div>
 {% endif %}
-
+<center>
+<h2>Hei!!!</h2>
+<p>Om du allerede har laget deg en brukerkonto kan du logge inn, hvis ikke så bør du lage en!</p>
+</center>
 <form method='POST' action="{% url django.contrib.auth.views.login %}">
 
 	{% csrf_token %}
