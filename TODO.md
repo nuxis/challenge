@@ -1,10 +1,11 @@
+## NOT DONE
 
-=== NOT DONE ===
+  * Translate to English ;-)
 
   * Rydde i koden
   * Fjerne alt som skal fjernes, så man kan legge ut koden
 
-=== DONE ===
+## DONE
 
   * Mulighet for å deaktivere challenge'n, og at man får en landingpage som blir refreshet en gang i blant
   * Ordne static-pathene (fungerer i wsgi)
