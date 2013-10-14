@@ -42,7 +42,7 @@ Python. Instead we wrote yet another quick PHP, hardcoded hack.
 And then we did the same for PP20 in 2011, and PP21 in 2012.
 
 Then came Polar Party 22, fall 2013.
-The technical crew was tired, had other oblications and generally wasn't up
+The technical crew was tired, had other obligations and generally wasn't up
 for (making) the challenge!
 
 But all of a sudden some of us were convinced by fans of the challenge.
