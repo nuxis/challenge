@@ -16,10 +16,10 @@ MANAGERS = ADMINS
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'psychic22',
-		'USER': 'psychic22',
-		'PASSWORD': 'topsikret22',
-		'HOST': '127.0.01',
+		'NAME': 'challenge',
+		'USER': 'challenge',
+		'PASSWORD': 'challenge',
+		'HOST': '127.0.0.1',
 		'PORT': '',
 	}
 }
@@ -99,3 +99,10 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
+
+
+try:
+	from settings_local import *
+except:
+	pass
+
