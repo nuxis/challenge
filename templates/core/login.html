@@ -12,7 +12,7 @@
 <h2>Hei!!!</h2>
 <p>Om du allerede har laget deg en brukerkonto kan du logge inn, hvis ikke så bør du lage en!</p>
 </center>
-<form method='POST' action="{% url django.contrib.auth.views.login %}">
+<form method='POST' action="{% url 'django.contrib.auth.views.login' %}">
 
 	{% csrf_token %}
 
@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td colspan=2>
-				<form method='GET' action="{% url challenge.core.views.register %}">
+				<form method='GET' action="{% url 'challenge.core.views.register' %}">
 				<input type="submit" class="width_submit" value="Registrer deg" />
 				</form>
 			</td>
