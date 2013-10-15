@@ -66,5 +66,6 @@ probably forgotten...
 * Marius Davidsen
 * Bjørn Gustav Baklid
 * Ludvig Anderssen
+* Bjørn Elias Hesthamar
 
 And of course: Thanks to all those who enjoys PsyChic Challenge!
