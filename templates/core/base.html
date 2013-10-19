@@ -15,7 +15,7 @@
 
 {% if user.is_authenticated %}
 <div class="userinfo">
-	{{user.username}} ({{user.first_name}} {{user.last_name}} &lt;{{user.email}}&gt;) &nbsp;  &nbsp; {% if user.is_superuser %} <a href="/admin/">Admin</a> - <a href="/score/">Score</a> - <a href="/attempts/">Forsøk</a> - {% endif %} <a href="{% url django.contrib.auth.views.logout_then_login %}">Logg ut</a>
+	{{user.username}} ({{user.first_name}} {{user.last_name}} &lt;{{user.email}}&gt;) &nbsp;  &nbsp; {% if user.is_superuser %} <a href="/admin/">Admin</a> - <a href="/score/">Score</a> - <a href="/attempts/">Forsøk</a> - {% endif %} <a href="{% url 'django.contrib.auth.views.logout_then_login' %}">Logg ut</a>
 </div>
 {% endif %}
 
