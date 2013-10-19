@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect, Http404
 #@user_passes_test(lambda u: u.is_superuser)
 def score (request):
 	c = {}
-	c['score'] = Score.objects.order_by ('-max_level')
+	c['score'] = Score.objects.order_by ('updated', '-max_level')
 
 	return prtr ("score.html", c, request)
 
