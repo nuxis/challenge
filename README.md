@@ -69,3 +69,8 @@ probably forgotten...
 * Bjørn Elias Hesthamar
 
 And of course: Thanks to all those who enjoys PsyChic Challenge!
+
+# License
+
+'challenge' is licensed under Affero General Public License, see the LICENSE-file.
+Django is licensed under the BSD license, see the file LICENSE-Django.
