@@ -17,4 +17,5 @@ urlpatterns = patterns('',
 	url (r'^register/$', 'challenge.core.views.register'),
 	url (r'^score/$', 'challenge.stats.views.score'),
 	url (r'^attempts/$', 'challenge.stats.views.attempts'),
+	url (r'^attempts/(?P<getnum>\d*)/$', 'challenge.stats.views.attempts'),
 )

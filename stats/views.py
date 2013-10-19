@@ -18,8 +18,12 @@ def score (request):
 
 # svarene kun til admins
 @user_passes_test(lambda u: u.is_superuser)
-def attempts (request):
+def attempts (request, getnum=None):
+	if getnum == None:
+		getnum = 25
+	
 	c = {}
-	c['attempts'] = Attempt.objects.order_by('-pk')
+	c['getnum'] = getnum
+	c['attempts'] = Attempt.objects.order_by('-pk')[:getnum]
 
 	return prtr ("attempts.html", c, request)
