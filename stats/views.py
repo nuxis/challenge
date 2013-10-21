@@ -8,15 +8,15 @@ from challenge.levels.models import Level, Score, Attempt
 
 from django.http import HttpResponseRedirect, Http404
 
-# vise score til alle, f.eks. på projektor
-#@user_passes_test(lambda u: u.is_superuser)
+# score can be accessed by anyone
 def score (request):
 	c = {}
 	c['score'] = Score.objects.order_by ('updated', '-max_level')
 
 	return prtr ("score.html", c, request)
 
-# svarene kun til admins
+
+# attemps should only be visible to superusers
 @user_passes_test(lambda u: u.is_superuser)
 def attempts (request, getnum=None):
 	if getnum == None:
