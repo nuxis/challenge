@@ -1,16 +1,17 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block content %}
 
 
 {% if form.errors %}
 <div class="error">
-	<p class="error">Feil brukernavn og/eller passord. Prøv på nytt.</p>
+	<p class="error">{% trans "Wrong username and/or password. Try again." %}</p>
 </div>
 {% endif %}
 <center>
-<h2>Hei!!!</h2>
-<p>Om du allerede har laget deg en brukerkonto kan du logge inn, hvis ikke så bør du lage en!</p>
+<h2>{% trans "Hello!" %}</h2>
+<p>{% trans "Create an user or sign in!" %}</p>
 </center>
 <form method='POST' action="{% url 'django.contrib.auth.views.login' %}">
 
@@ -29,14 +30,14 @@
 		</tr>
 		<tr>
 			<td colspan=2>
-				<input type="submit" class="width_submit" value="Logg inn" />
+				<input type="submit" class="width_submit" value="{% trans "Log in" %}" />
 </form>
 			</td>
 		</tr>
 		<tr>
 			<td colspan=2>
 				<form method='GET' action="{% url 'challenge.core.views.register' %}">
-				<input type="submit" class="width_submit" value="Registrer deg" />
+				<input type="submit" class="width_submit" value="{% trans "Register user" %}" />
 				</form>
 			</td>
 		</tr>

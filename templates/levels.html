@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block style %}
 {% if level.css %}
@@ -10,7 +11,7 @@
 
 <center>
 
-<h2>Level {{level.pk}}</h2>
+<h2>{% trans "Level" %} {{level.pk}}</h2>
 
 
 {% if error %}
@@ -42,7 +43,7 @@
 			{% if level.buttontext %}
 			<input type="submit" value="{{ level.buttontext }}" style="width: 100%;" />
 			{% else %}
-			<input type="submit" value="Prøv lykken ;-)" style="width: 100%;" />
+			<input type="submit" value="{% trans "Feeling lucky? ;-)" %}" style="width: 100%;" />
 			{% endif %}
 		</td>
 	</tr>

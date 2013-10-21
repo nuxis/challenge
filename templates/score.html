@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block extrahead %}
 	<meta http-equiv="refresh" content="5" />
@@ -8,13 +9,13 @@
 
 <center>
 
-<h2>Score</h2>
+<h2>{% trans "Score" %}</h2>
 
 <table>
 	<tr>
-		<th>Hvem</th>
-		<th>Fullført level</th>
-		<th>Tid</th>
+		<th>{% trans "User" %}</th>
+		<th>{% trans "Completed level" %}</th>
+		<th>{% trans "Time" %}</th>
 	</tr>
 	{% for s in score %}
 	<tr>

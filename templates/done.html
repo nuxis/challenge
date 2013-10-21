@@ -1,19 +1,20 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block content %}
 
 <center>
 
-<h2>Ferdig?!</h2>
+<h2>{% trans "Done?!" %}</h2>
 
 
 
-<p>Nå lurer du vel på om du er førstemann? Det får du nok ikke vite her! :-P</p>
+<p>{% trans "You're probably wondering if you've won or not... You won't find that here!" %}</p>
 
 <table>
 	<tr>
-		<th>Level</th>
-		<th>Tid</th>
+		<th>{% trans "Level" %}</th>
+		<th>{% trans "Time" %}</th>
 	</tr>
 	<tr>
 		<td>{{score.max_level}}</td>

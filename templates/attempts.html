@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block extrahead %}
 	<meta http-equiv="refresh" content="1" />
@@ -8,15 +9,15 @@
 
 <center>
 
-<h2>{{getnum}} siste forsøk</h2>
+<h2>{{getnum}} {% trans "last attempts" %}</h2>
 
 <table>
 	<tr>
-		<th>Hvem</th>
-		<th>Tid</th>
-		<th>Level</th>
-		<th>Forsøk</th>
-		<th>Riktig?</th>
+		<th>{% trans "User" %}</th>
+		<th>{% trans "Time" %}</th>
+		<th>{% trans "Level" %}</th>
+		<th>{% trans "Answer" %}</th>
+		<th>{% trans "Correct?" %}</th>
 	</tr>
 	{% for a in attempts %}
 	<tr>

@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load i18n %}
 
 {% block extrahead %}
 <style>
@@ -10,8 +11,8 @@
 {% block content %}
 
 <center>
-<h2>We couldn't find what you're looking for...</h2>
+<h2>{% trans "We couldn't find what you're looking for..." %}</h2>
 </center>
-<p>This might be an error. Or you may have done something weird.</p>
-<p>You could go back and try one more time, or you could contact us and ask for some help if you think whatever you're looking for really should be here.</p>
+<p>{% trans "This might be an error. Or you may have done something weird." %}</p>
+<p>{% trans "You could go back and try one more time, or you could contact us and ask for some help if you think whatever you're looking for really should be here." %}</p>
 {% endblock %}
