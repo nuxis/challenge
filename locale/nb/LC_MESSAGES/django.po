@@ -1,0 +1,130 @@
+# challenge translation.
+# Copyright (C) 2013 Mathias Bøhn Grytemark
+# This file is distributed under the same license as the 'challenge' package.
+# Mathias Bøhn Grytemark <mathias@grytemark.no>, 2013.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-21 22:09+0200\n"
+"PO-Revision-Date: 2013-10-21 21:20+0200\n"
+"Last-Translator: Mathias Bøhn Grytemark <mathias@grytemark.no>\n"
+"Language-Team: pr0jectx\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/404.html:14
+msgid "We couldn't find what you're looking for..."
+msgstr "Vi klarte ikke å finne det du leter etter..."
+
+#: templates/404.html:16
+msgid "This might be an error. Or you may have done something weird."
+msgstr "Det kan jo være en feil. Eventuelt så har du gjort noe rart."
+
+#: templates/404.html:17
+msgid ""
+"You could go back and try one more time, or you could contact us and ask for "
+"some help if you think whatever you're looking for really should be here."
+msgstr ""
+"Du kan gå tilbake og prøve en gang til, eller så kan du kontakte oss og "
+"spørre om hjelp hvis du mener at det du leter etter faktisk burde være her."
+
+#: templates/500.html:10
+msgid "Oops! Something unforeseen happened!"
+msgstr "Ops! Det skjedde noe rart!"
+
+#: templates/500.html:12
+msgid "Please go back and try again, or give up and forget about it..."
+msgstr "Vennligst gå tilbake og prøv på nytt, eller gi opp og glem det..."
+
+#: templates/500.html:13
+msgid ""
+"If you were doing something important or at least something that you would "
+"like to get done, you could contact the site administrators if this "
+"continues to happen!"
+msgstr ""
+"Hvis du gjorde noe viktig eller i alle fall noe du faktisk ønsker å gjøre, "
+"så burde du kontakte oss hvis dette skjer flere ganger!"
+
+#: templates/attempts.html:12
+msgid "last attempts"
+msgstr "Siste forsøk"
+
+#: templates/attempts.html:16 templates/score.html:16
+msgid "User"
+msgstr "Bruker"
+
+#: templates/attempts.html:17 templates/done.html:17 templates/score.html:18
+msgid "Time"
+msgstr "Tid"
+
+#: templates/attempts.html:18 templates/done.html:16 templates/levels.html:14
+msgid "Level"
+msgstr "Level"
+
+#: templates/attempts.html:19
+msgid "Answer"
+msgstr "Svar"
+
+#: templates/attempts.html:20
+msgid "Correct?"
+msgstr "Riktig?"
+
+#: templates/done.html:8
+msgid "Done?!"
+msgstr "Ferdig?!"
+
+#: templates/done.html:12
+msgid ""
+"You're probably wondering if you've won or not... You won't find that here!"
+msgstr ""
+"Du lurer sannsynligvis på om du har vunnet eller ikke... Det finner du ikke "
+"ut her!"
+
+#: templates/levels.html:46
+msgid "Feeling lucky? ;-)"
+msgstr "Prøv lykken? ;-)"
+
+#: templates/score.html:12 templates/core/base.html:19
+msgid "Score"
+msgstr "Score"
+
+#: templates/score.html:17
+msgid "Completed level"
+msgstr "Fullført level"
+
+#: templates/core/base.html:19
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/core/base.html:19
+msgid "Attempts"
+msgstr "Forsøk"
+
+#: templates/core/base.html:19
+msgid "Log out"
+msgstr "Logg ut"
+
+#: templates/core/login.html:9
+msgid "Wrong username and/or password. Try again."
+msgstr "Feil brukernavn og/eller passord. Prøv på nytt."
+
+#: templates/core/login.html:13
+msgid "Hello!"
+msgstr "Hei!"
+
+#: templates/core/login.html:14
+msgid "Create an user or sign in!"
+msgstr "Opprett en bruker eller logg inn!"
+
+#: templates/core/login.html:33
+msgid "Log in"
+msgstr "Logg inn"
+
+#: templates/core/login.html:40
+msgid "Register user"
+msgstr "Registrer bruker"
