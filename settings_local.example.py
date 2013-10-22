@@ -1,6 +1,9 @@
 
+# Some settings have to be set, some not... Give it a try.
 
-DEBUG = False
+# Directories:
+# media: workdir + /media/
+# static: workdir + /static/
 
 
 #ADMINS = (
@@ -20,6 +23,9 @@ DATABASES = {
 	}
 }
 
+
+TIME_ZONE = 'Europe/Oslo'
+LANGUAGE_CODE = 'en'
 
 
 # Make this unique, and don't share it with anybody.
