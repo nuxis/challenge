@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-21 22:09+0200\n"
+"POT-Creation-Date: 2013-10-22 21:37+0200\n"
 "PO-Revision-Date: 2013-10-21 21:20+0200\n"
 "Last-Translator: Mathias Bøhn Grytemark <mathias@grytemark.no>\n"
 "Language-Team: pr0jectx\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: templates/attempts.html:12
 msgid "last attempts"
-msgstr "Siste forsøk"
+msgstr "siste forsøk"
 
 #: templates/attempts.html:16 templates/score.html:16
 msgid "User"
