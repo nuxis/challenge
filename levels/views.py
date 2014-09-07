@@ -21,7 +21,7 @@ def index(request):
 	try:
 		config = Config.objects.get(pk=1)
 	except Config.DoesNotExist:
-		return Http404
+		raise Http404
 	c['config'] = config
 	if not config.active:
 		return prtr ("closed.html", c, request)
