@@ -6,6 +6,9 @@
 # static: workdir + /static/
 
 
+# Set DEBUG to False to run in production!
+DEBUG = True
+
 #ADMINS = (
 #	 ('Mr. Your Name', 'email@example.com'),
 #)
@@ -14,12 +17,8 @@
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'challenge',
-		'USER': 'challenge',
-		'PASSWORD': 'challenge',
-		'HOST': '127.0.0.1',
-		'PORT': '',
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': 'challenge.sqlite3',
 	}
 }
 
