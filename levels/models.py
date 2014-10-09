@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Level(models.Model):
 	name = models.CharField(max_length=64)
 	question = models.TextField()
-	multianswer = models.BooleanField()
+	multianswer = models.BooleanField(default=False)
 	answer = models.CharField(max_length=128)
 	sourcehint = models.CharField (max_length=256, blank=True)
 	imageurl = models.CharField (max_length=256, blank=True)
@@ -24,5 +24,5 @@ class Attempt(models.Model):
 	user = models.ForeignKey (User)
 	level = models.ForeignKey (Level)
 	answer = models.TextField ()
-	correct = models.BooleanField ()
+	correct = models.BooleanField (default=False)
 	time = models.DateTimeField (auto_now=True)
