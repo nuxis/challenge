@@ -11,7 +11,7 @@ class Level(models.Model):
 	buttontext = models.CharField (max_length=256, blank=True)
 	css = models.TextField (blank=True)
 
-	def __unicode__(self):
+	def __str__(self):
 		return str(self.pk) + " - " + self.name
 
 
