@@ -68,7 +68,7 @@ INSTALLED_APPS = (
 )
 
 STATICFILES_DIRS = (
-   os.path.join(PROJECT_DIR, "..", "style/"),
+   os.path.join(PROJECT_DIR, "..", "files/"),
 )
 
 TEMPLATE_DIRS = (
