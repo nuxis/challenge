@@ -17,7 +17,7 @@ def index(request):
 		raise Http404
 
 
-	from challenge.core.models import Config
+	from core.models import Config
 	try:
 		config = Config.objects.get(pk=1)
 	except Config.DoesNotExist:
