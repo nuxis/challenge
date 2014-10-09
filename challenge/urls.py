@@ -12,9 +12,9 @@ urlpatterns = patterns('',
 	
 	url (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 
-	url (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'core/login.html'}),
-	url (r'^logout/$', 'django.contrib.auth.views.logout_then_login'),
-	url (r'^register/$', 'core.views.register'),
+	url (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'core/login.html'}, name="login"),
+	url (r'^logout/$', 'django.contrib.auth.views.logout_then_login', name="logout_then_login"),
+	url (r'^register/$', 'core.views.register', name="register"),
 	url (r'^score/$', 'stats.views.score'),
 	url (r'^attempts/$', 'stats.views.attempts'),
 	url (r'^attempts/(?P<getnum>\d*)/$', 'stats.views.attempts'),
