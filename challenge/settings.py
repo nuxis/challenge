@@ -43,7 +43,7 @@ TEMPLATE_LOADERS = (
 )
 LOCALE_PATHS = (
     os.path.join(PROJECT_DIR, "locale/"), 
-    )
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -71,7 +71,7 @@ STATICFILES_DIRS = (
    os.path.join(PROJECT_DIR, "../static/"),
     )
 TEMPLATE_DIRS = (
-     os.path.join(PROJECT_DIR, "templates"),
+     os.path.join(PROJECT_DIR, "..", "templates"),
 )
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "media/")
 
