@@ -68,14 +68,15 @@ INSTALLED_APPS = (
 )
 
 STATICFILES_DIRS = (
-   os.path.join(PROJECT_DIR, "../static/"),
-    )
+   os.path.join(PROJECT_DIR, "..", "style/"),
+)
+
 TEMPLATE_DIRS = (
      os.path.join(PROJECT_DIR, "..", "templates"),
 )
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "media/")
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, "static/")
+STATIC_ROOT = os.path.join(PROJECT_DIR, "..", "static/")
 STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
