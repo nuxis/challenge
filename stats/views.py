@@ -2,9 +2,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
-from core.common import prtr
+from challenge.core.common import prtr
 
-from levels.models import Level, Score, Attempt
+from challenge.levels.models import Level, Score, Attempt
 
 from django.http import HttpResponseRedirect, Http404
 

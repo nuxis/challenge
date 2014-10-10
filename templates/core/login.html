@@ -13,7 +13,7 @@
 <h2>{% trans "Hello!" %}</h2>
 <p>{% trans "Create an user or sign in!" %}</p>
 </center>
-<form method='POST' action="{% url 'login' %}">
+<form method='POST' action="{% url 'django.contrib.auth.views.login' %}">
 
 	{% csrf_token %}
 
@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td colspan=2>
-				<form method='GET' action="{% url 'register' %}">
+				<form method='GET' action="{% url 'challenge.core.views.register' %}">
 				<input type="submit" class="width_submit" value="{% trans "Register user" %}" />
 				</form>
 			</td>
