@@ -24,7 +24,7 @@
 	<tbody>
 	{% for a in attempts %}
 	<tr>
-		<td>{{a.user.username}} ({{s.user.first_name}} {{s.user.last_name}})</td>
+		<td>{{a.user.username}} ({{a.user.first_name}} {{a.user.last_name}})</td>
 		<td>{{a.time|date:'d.m.Y H:i:s'}}</td>
 		<td>{{a.level}}</td>
 		<td>{{a.answer}}</td>
