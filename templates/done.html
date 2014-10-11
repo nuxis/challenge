@@ -11,15 +11,19 @@
 
 <p>{% trans "You are done with this challenge. The administrators of this challenge will announce or contact the winners manually." %}</p>
 
-<table>
+<table class="table table-bordered">
+<thead>
 	<tr>
 		<th>{% trans "Level" %}</th>
 		<th>{% trans "Time" %}</th>
 	</tr>
+</thead>
+<tbody>
 	<tr>
 		<td>{{score.max_level}}</td>
 		<td>{{score.updated}}</td>
 	</tr>
+</tbody>
 </table>
 
 
