@@ -1,34 +1,39 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load bootstrap3 %}
 {% load i18n %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 
-<head>
-   <title>{% block title %}psychic challenge{% endblock %}</title>
+{% block bootstrap3_extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+{% endblock %}
 
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
-	{% block extrahead %}{% endblock %}
-	{% block style %}{% endblock %}
-</head>
 
-<body>
-
-<h1>{% block heading %}psychic challenge{% endblock %}</h1>
-
-{% if user.is_authenticated %}
-<div class="userinfo">
-	{{user.username}} ({{user.first_name}} {{user.last_name}} &lt;{{user.email}}&gt;) &nbsp;  &nbsp; {% if user.is_superuser %} <a href="/admin/">{% trans "Admin" %}</a> - <a href="/score/">{% trans "Score" %}</a> - <a href="/attempts/">{% trans "Attempts" %}</a> - {% endif %} <a href="{% url 'logout_then_login' %}">{% trans "Log out" %}</a>
+{% block bootstrap3_content %}
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="class navbar-brand" href="#">challenge</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			{% if user.is_authenticated %}
+			<ul class="nav navbar-nav navbar-right">
+				<li><a>{{user.username}}</a></li>
+				{% if user.is_superuser %}
+				<li><a href="{% url 'score' %}">{% trans "Score" %}</a></li>
+				<li><a href="{% url 'attempts' %}">{% trans "Attempts" %}</a></li>
+				<li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+				{% endif %}
+				<li><a href="{% url 'logout_then_login' %}">{% trans "Log out" %}</a></li>
+			</ul>
+			{% endif %}
+		</div>
+	</div>
 </div>
-{% endif %}
 
+<div class="container" id="content">
+{% bootstrap_messages %}
 
-<hr class="line" />
-
-
-<div class="content">
 {% block content %}
+{% endblock %}
 
 {% endblock %}
 </div>
-
-</body>
-</html>

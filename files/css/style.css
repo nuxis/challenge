@@ -2,13 +2,15 @@
 
 body
 {
-	font-family: verdana, sans-serif, arial;
+/*	font-family: verdana, sans-serif, arial; OLD */
 
-/*	background-color: #150E3A; */
-	background-color: #7caedd;
+	padding-top: 50px;
 
-/*	color: #909090; */
-	color: black;
+/*	background-color: #150E3A; OLD */
+/*	background-color: #7caedd; */
+
+/*	color: #909090; OLD */
+/*	color: black; */
 }
 
 
@@ -36,36 +38,3 @@ div.error
 	font-weight: bold;
 }
 
-div.userinfo
-{
-	font-size: 80%;
-	float: right;
-	margin-top: -50px;
-}
-
-a
-{
-/*	color: #909090; */
-	color: black;
-}
-a#hover
-{
-/*	color: #909090; */
-	color: black;
-}
-a#visited
-{
-/*	color: #909090; */
-	color: black;
-}
-
-hr.line
-{
-	width: 100%;
-/*	color: #909090; */
-	color: black;
-	margin: 0;
-	padding: 0;
-/*	border: solid 2px #909090; */
-	border: solid 2px black;
-}
