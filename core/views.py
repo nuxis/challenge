@@ -21,7 +21,8 @@ def register(request):
     error = False
 
     if not form.is_valid():
-        messages.error(request, _("Something went wrong, check the form and try again"))
+        messages.error(request,
+            _("Something went wrong, check the form and try again"))
         error = True
 
     if form.cleaned_data['password'] != form.cleaned_data['password2']:
@@ -36,7 +37,8 @@ def register(request):
         return render(request, "core/register.html", c)
 
     try:
-        user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+        user = User.objects.create_user(form.cleaned_data['username'],
+            form.cleaned_data['email'], form.cleaned_data['password'])
     except:
         messages.error(request, _("Username already exists"))
         return render(request, "core/register.html", c)
@@ -45,7 +47,8 @@ def register(request):
     user.last_name = form.cleaned_data['last_name']
     user.save()
 
-    user = authenticate(username=user.username, password=form.cleaned_data['password'])
+    user = authenticate(username=user.username,
+        password=form.cleaned_data['password'])
     login(request, user)
 
     return HttpResponseRedirect('/')
