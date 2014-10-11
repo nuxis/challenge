@@ -4,17 +4,10 @@
 
 {% block content %}
 
-
-{% if form.errors %}
-<div class="error">
-	<p class="error">{% trans "Wrong username and/or password. Try again." %}</p>
-</div>
-{% endif %}
 <center>
 <h2>{% trans "Hello!" %}</h2>
 <p>{% trans "Create an user or sign in!" %}</p>
 </center>
-
 
 <form method='POST' action="{% url 'login' %}">
 
