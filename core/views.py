@@ -34,7 +34,7 @@ def register(request):
         error = True
 
     if error:
-        return render(request, "core/register.html", c)
+        return render(request, "core/register.html", context)
 
     try:
         user = User.objects.create_user(form.cleaned_data['username'],
