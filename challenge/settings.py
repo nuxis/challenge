@@ -85,8 +85,8 @@ LOGIN_REDIRECT_URL = '/'
 
 try:
     from challenge.settings_local import *
-except ImportError as e:
-    print(e)
+except ImportError as exc:
+    print(exc)
     pass
 
 TEMPLATE_DEBUG = DEBUG
