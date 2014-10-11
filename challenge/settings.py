@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+    'bootstrap3',
     'levels',
     'core',
     'stats',
