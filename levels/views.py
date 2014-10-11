@@ -13,21 +13,21 @@ from levels.forms import AnswerForm
 @login_required
 def index(request):
     c = {}
-    
+
     try:
         config = Config.objects.get(pk=1)
     except Config.DoesNotExist:
         raise Http404
 
     c['config'] = config
-    
+
     if not config.active:
-        return render (request, "closed.html", c)
-    
+        return render(request, "closed.html", c)
+
     try:
         end_level = Level.objects.latest('pk')
     except Level.DoesNotExist:
-        return render (request, "closed.html", c)
+        return render(request, "closed.html", c)
 
     user = request.user
 
@@ -36,7 +36,7 @@ def index(request):
     except:
         score = Score(user=user, max_level=0)
 
-    
+
     if score.max_level == end_level.pk:
         return HttpResponseRedirect('/done/')
 
@@ -45,33 +45,33 @@ def index(request):
 
     if request.method == "POST":
         answer = request.POST['answer'].upper()
-        attempt = Attempt (user=user, level=level, answer=answer)
+        attempt = Attempt(user=user, level=level, answer=answer)
         if not level.multianswer:
             if answer == level.answer.upper():
                 score.max_level += 1
                 score.save()
                 attempt.correct = True
-                attempt.save ()
+                attempt.save()
                 return HttpResponseRedirect('/')
             else:
                 attempt.correct = False
-                attempt.save ()
-                messages.error (request, _('Wrong answer! Try again :-D'))
+                attempt.save()
+                messages.error(request, _('Wrong answer! Try again :-D'))
         else:
             for level_answer in level.answer.split('||'):
                 if answer == level_answer.upper():
                     score.max_level += 1
                     score.save()
                     attempt.correct = True
-                    attempt.save ()
+                    attempt.save()
                     return HttpResponseRedirect('/')
-            messages.error (request, _('Wrong answer! Try again :-D'))
+            messages.error(request, _('Wrong answer! Try again :-D'))
             attempt.correct = False
-            attempt.save ()
-            
+            attempt.save()
+
     c['level'] = level
-    c['form'] = AnswerForm ()
-    return render (request, "levels.html", c)
+    c['form'] = AnswerForm()
+    return render(request, "levels.html", c)
 
 @login_required
 def done(request):
@@ -81,13 +81,12 @@ def done(request):
         score = Score.objects.get(user=request.user)
     except:
         return HttpResponseRedirect('/')
-        
 
     end_level = Level.objects.latest('pk')
     if score.max_level == end_level.pk:
             score = Score.objects.get(user=request.user)
             c['score'] = score
 
-            return render (request, "done.html", c)
+            return render(request, "done.html", c)
     else:
         return HttpResponseRedirect('/')
