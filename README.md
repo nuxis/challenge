@@ -77,10 +77,4 @@ Django is licensed under the BSD license, see the file LICENSE-Django.
 
 # Installing
 
-* Needs some packages (names for Debian):
- * apache2
- * build-essential
- * mysql-server
- * libmysqlclient-dev
- * python-dev
-* Recommended to install in a virtualenv. See requirements.txt for required pip packages.
+Recommended to install in a virtualenv. See requirements.txt for required pip packages.

@@ -1,2 +1,2 @@
 Django==1.7
-pyMySQL
+PyMySQL==0.6.2
