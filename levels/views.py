@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, Http404
+from django.utils.translation import ugettext_lazy as _
 
 from core.models import Config
 from levels.models import Level, Score, Attempt
 
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, Http404
 
 @login_required
 def index(request):
@@ -54,7 +55,7 @@ def index(request):
             else:
                 attempt.correct = False
                 attempt.save ()
-                c['error'] = 'Feil svar! Prøv igjen :-D'
+                c['error'] = _('Wrong answer! Try again :-D')
         else:
             for level_answer in level.answer.split('||'):
                 if answer == level_answer.upper():
@@ -63,7 +64,7 @@ def index(request):
                     attempt.correct = True
                     attempt.save ()
                     return HttpResponseRedirect('/')
-            c['error'] = 'Feil svar! Prøv igjen :-D'
+            c['error'] = _('Wrong answer! Try again :-D')
             attempt.correct = False
             attempt.save ()
             

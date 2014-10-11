@@ -8,14 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-11 18:43+0200\n"
-"PO-Revision-Date: 2013-10-21 21:20+0200\n"
+"POT-Creation-Date: 2014-10-11 19:22+0200\n"
+"PO-Revision-Date: 2014-10-11 19:19+0200\n"
 "Last-Translator: Mathias Bøhn Grytemark <mathias@grytemark.no>\n"
 "Language-Team: pr0jectx\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: challenge/settings.py:26
+msgid "Norwegian bokmål"
+msgstr "Norsk bokmål"
+
+#: challenge/settings.py:27
+msgid "English"
+msgstr "Engelsk"
+
+#: levels/views.py:58 levels/views.py:67
+msgid "Wrong answer! Try again :-D"
+msgstr "Feil svar! Prøv på nytt :-D"
 
 #: templates/404.html:14
 msgid "We couldn't find what you're looking for..."
@@ -129,10 +141,3 @@ msgstr "Prøv lykken? ;-)"
 #: templates/score.html:17
 msgid "Completed level"
 msgstr "Fullført level"
-
-#~ msgid ""
-#~ "You're probably wondering if you've won or not... You won't find that "
-#~ "here!"
-#~ msgstr ""
-#~ "Du lurer sannsynligvis på om du har vunnet eller ikke... Det finner du "
-#~ "ikke ut her!"

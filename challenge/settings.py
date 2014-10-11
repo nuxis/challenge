@@ -67,10 +67,6 @@ INSTALLED_APPS = (
     'stats',
 )
 
-LOCALE_PATHS = (
-   os.path.join(PROJECT_DIR, "..", "locale/"),
-)
-
 STATICFILES_DIRS = (
    os.path.join(PROJECT_DIR, "..", "files/"),
 )
