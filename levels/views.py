@@ -4,27 +4,30 @@ from django.contrib.auth.decorators import login_required
 
 from core.common import prtr
 
+from core.models import Config
 from levels.models import Level, Score, Attempt
 
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 
 @login_required
 def index(request):
     c = {}
-    try:
-        end_level = Level.objects.latest('pk')
-    except Level.DoesNotExist:
-        raise Http404
-
-
-    from core.models import Config
+    
     try:
         config = Config.objects.get(pk=1)
     except Config.DoesNotExist:
         raise Http404
+
     c['config'] = config
+    
     if not config.active:
         return prtr ("closed.html", c, request)
+    
+    try:
+        end_level = Level.objects.latest('pk')
+    except Level.DoesNotExist:
+        return render (request, "closed.html", c)
 
     user = request.user
 
