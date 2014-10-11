@@ -10,7 +10,7 @@ from levels.models import Level, Score, Attempt
 # score can be accessed by anyone
 def score (request):
 	c = {}
-	c['score'] = Score.objects.order_by ('updated', '-max_level')
+	c['score'] = Score.objects.order_by ('-max_level', 'updated')
 
 	return render (request, "score.html", c)
 
