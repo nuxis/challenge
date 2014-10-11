@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, Http404
 
-from levels.models import Level, Score, Attempt
+from levels.models import Score, Attempt
 
 
 # score can be accessed by anyone
