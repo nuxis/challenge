@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-22 21:37+0200\n"
+"POT-Creation-Date: 2014-10-11 18:38+0200\n"
 "PO-Revision-Date: 2013-10-21 21:20+0200\n"
 "Last-Translator: Mathias Bøhn Grytemark <mathias@grytemark.no>\n"
 "Language-Team: pr0jectx\n"
@@ -74,32 +74,13 @@ msgstr "Svar"
 msgid "Correct?"
 msgstr "Riktig?"
 
-#: templates/done.html:8
-msgid "Done?!"
-msgstr "Ferdig?!"
-
-#: templates/done.html:12
-msgid ""
-"You're probably wondering if you've won or not... You won't find that here!"
-msgstr ""
-"Du lurer sannsynligvis på om du har vunnet eller ikke... Det finner du ikke "
-"ut her!"
-
-#: templates/levels.html:46
-msgid "Feeling lucky? ;-)"
-msgstr "Prøv lykken? ;-)"
-
-#: templates/score.html:12 templates/core/base.html:19
-msgid "Score"
-msgstr "Score"
-
-#: templates/score.html:17
-msgid "Completed level"
-msgstr "Fullført level"
-
 #: templates/core/base.html:19
 msgid "Admin"
 msgstr "Admin"
+
+#: templates/core/base.html:19 templates/score.html:12
+msgid "Score"
+msgstr "Score"
 
 #: templates/core/base.html:19
 msgid "Attempts"
@@ -128,3 +109,22 @@ msgstr "Logg inn"
 #: templates/core/login.html:40
 msgid "Register user"
 msgstr "Registrer bruker"
+
+#: templates/done.html:8
+msgid "Done?!"
+msgstr "Ferdig?!"
+
+#: templates/done.html:12
+msgid ""
+"You're probably wondering if you've won or not... You won't find that here!"
+msgstr ""
+"Du lurer sannsynligvis på om du har vunnet eller ikke... Det finner du ikke "
+"ut her!"
+
+#: templates/levels.html:46
+msgid "Feeling lucky? ;-)"
+msgstr "Prøv lykken? ;-)"
+
+#: templates/score.html:17
+msgid "Completed level"
+msgstr "Fullført level"
