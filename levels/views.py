@@ -12,22 +12,22 @@ from levels.forms import AnswerForm
 
 @login_required
 def index(request):
-    c = {}
+    context = {}
 
     try:
         config = Config.objects.get(pk=1)
     except Config.DoesNotExist:
         raise Http404
 
-    c['config'] = config
+    context['config'] = config
 
     if not config.active:
-        return render(request, "closed.html", c)
+        return render(request, "closed.html", context)
 
     try:
         end_level = Level.objects.latest('pk')
     except Level.DoesNotExist:
-        return render(request, "closed.html", c)
+        return render(request, "closed.html", context)
 
     user = request.user
 
@@ -69,13 +69,13 @@ def index(request):
             attempt.correct = False
             attempt.save()
 
-    c['level'] = level
-    c['form'] = AnswerForm()
-    return render(request, "levels.html", c)
+    context['level'] = level
+    context['form'] = AnswerForm()
+    return render(request, "levels.html", context)
 
 @login_required
 def done(request):
-    c = {}
+    context = {}
 
     try:
         score = Score.objects.get(user=request.user)
@@ -85,7 +85,7 @@ def done(request):
     end_level = Level.objects.latest('pk')
     if score.max_level == end_level.pk:
         score = Score.objects.get(user=request.user)
-        c['score'] = score
-        return render(request, "done.html", c)
+        context['score'] = score
+        return render(request, "done.html", context)
     else:
         return HttpResponseRedirect('/')

@@ -8,15 +8,15 @@ from django.utils.translation import ugettext_lazy as _
 from core.forms import UserForm
 
 def register(request):
-    c = {
+    context = {
         'form': UserForm()
     }
 
     if request.method != "POST":
-        return render(request, "core/register.html", c)
+        return render(request, "core/register.html", context)
 
     data = request.POST.copy()
-    c['form'] = form = UserForm(data)
+    context['form'] = form = UserForm(data)
 
     error = False
 
@@ -41,7 +41,7 @@ def register(request):
             form.cleaned_data['email'], form.cleaned_data['password'])
     except:
         messages.error(request, _("Username already exists"))
-        return render(request, "core/register.html", c)
+        return render(request, "core/register.html", context)
 
     user.first_name = form.cleaned_data['first_name']
     user.last_name = form.cleaned_data['last_name']
