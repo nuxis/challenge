@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load i18n %}
+{% load bootstrap3 %}
 
 {% block content %}
 
@@ -13,35 +14,19 @@
 <h2>{% trans "Hello!" %}</h2>
 <p>{% trans "Create an user or sign in!" %}</p>
 </center>
+
+
 <form method='POST' action="{% url 'login' %}">
 
-	{% csrf_token %}
+{% bootstrap_form form %}
 
-	<input type='hidden' name='next' value='{{next}}' />
+{% csrf_token %}
 
-	<table class='login'>
-		<tr>
-			<td>{{ form.username.label_tag }}</td>
-			<td>{{ form.username }}</td>
-		</tr>
-		<tr>
-			<td>{{ form.password.label_tag }}</td>
-			<td>{{ form.password }}</td>
-		</tr>
-		<tr>
-			<td colspan=2>
-				<input type="submit" class="width_submit" value="{% trans "Log in" %}" />
+{% buttons %}
+<button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+<a role="button" href="{% url 'register' %}" class="btn btn-warning">{% trans "Register user" %}</a>
+{% endbuttons %}
+
 </form>
-			</td>
-		</tr>
-		<tr>
-			<td colspan=2>
-				<form method='GET' action="{% url 'register' %}">
-				<input type="submit" class="width_submit" value="{% trans "Register user" %}" />
-				</form>
-			</td>
-		</tr>
-	</table>
-
 
 {% endblock %}
