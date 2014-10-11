@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-
+{% load bootstrap3 %}
 
 {% block content %}
 
@@ -22,48 +22,13 @@
 </div>
 {% endif%}
 
-<form action="." method="POST">
+<form action="{% url 'register' %}" method="POST">
 
-<table class="login">
+{% bootstrap_form form%}
 
-	<tr>
-		<td>{{form.first_name.label}}</td>
-		<td>{{form.first_name}}</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>{{form.last_name.label}}</td>
-		<td>{{form.last_name}}</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>{{form.username.label}}</td>
-		<td>{{form.username}}</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>{{form.email.label}}</td>
-		<td>{{form.email}}</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>{{form.password.label}}</td>
-		<td>{{form.password}}</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>{{form.password2.label}}</td>
-		<td>{{form.password2}}</td>
-		<td></td>
-	</tr>
-
-	<tr>
-		<td colspan=3>
-			<input type="submit" value="Registrer deg" />
-		</td>
-	</tr>
-</table>
-
+{% buttons %}
+<button type="submit" class="btn btn-primary">{% trans "Register user" %}</button>
+{% endbuttons%}
 
 </form>
 
