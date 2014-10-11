@@ -2,8 +2,6 @@
 
 from django.contrib.auth.decorators import login_required
 
-from core.common import prtr
-
 from core.models import Config
 from levels.models import Level, Score, Attempt
 
@@ -22,7 +20,7 @@ def index(request):
     c['config'] = config
     
     if not config.active:
-        return prtr ("closed.html", c, request)
+        return render (request, "closed.html", c)
     
     try:
         end_level = Level.objects.latest('pk')
@@ -71,7 +69,7 @@ def index(request):
             
     c['level'] = level
 
-    return prtr("levels.html", c, request)
+    return render (request, "levels.html", c)
 
 @login_required
 def done(request):
@@ -88,6 +86,6 @@ def done(request):
             score = Score.objects.get(user=request.user)
             c['score'] = score
 
-            return prtr ("done.html", c, request)
+            return render (request, "done.html", c)
     else:
         return HttpResponseRedirect('/')
