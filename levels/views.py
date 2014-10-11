@@ -8,7 +8,7 @@ from django.contrib import messages
 
 from core.models import Config
 from levels.models import Level, Score, Attempt
-
+from levels.forms import AnswerForm
 
 @login_required
 def index(request):
@@ -70,7 +70,7 @@ def index(request):
             attempt.save ()
             
     c['level'] = level
-
+    c['form'] = AnswerForm ()
     return render (request, "levels.html", c)
 
 @login_required

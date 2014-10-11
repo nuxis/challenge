@@ -25,24 +25,21 @@
 <img src="{{level.imageurl}}" />
 {% endif %}
 
+<div class="well">
+
 <form action="{% url 'index' %}" method="POST">
-<table style="width: 40%;">
-	<tr>
-		<td>
-			<input style="width: 99%;" type="text" name="answer" value="" />
-		</td>
-	</tr>
-	<tr>
-		<td>
-			{% if level.buttontext %}
-			<input type="submit" value="{{ level.buttontext }}" style="width: 100%;" />
-			{% else %}
-			<input type="submit" value="{% trans "Feeling lucky? ;-)" %}" style="width: 100%;" />
-			{% endif %}
-		</td>
-	</tr>
-</table>
+{% bootstrap_form form %}
+
+{% buttons %}
+{% if level.buttontext %}
+<button type="submit" class="btn btn-primary">{{ level.buttontext }}</button>
+{% else %}
+<button type="submit" class="btn btn-primary">{% trans "Feeling lucky? ;-)"%}</button>
+{% endif %}
+{% endbuttons %}
 </form>
+
+</div>
 
 </center>
 <script type="text/javascript" language="JavaScript">
