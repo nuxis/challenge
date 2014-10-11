@@ -55,6 +55,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'challenge.urls'
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
