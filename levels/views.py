@@ -84,9 +84,8 @@ def done(request):
 
     end_level = Level.objects.latest('pk')
     if score.max_level == end_level.pk:
-            score = Score.objects.get(user=request.user)
-            c['score'] = score
-
-            return render(request, "done.html", c)
+        score = Score.objects.get(user=request.user)
+        c['score'] = score
+        return render(request, "done.html", c)
     else:
         return HttpResponseRedirect('/')
