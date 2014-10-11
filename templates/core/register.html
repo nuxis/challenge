@@ -4,30 +4,14 @@
 
 {% block content %}
 
-<h2>Registrer deg!</h2>
-
-{% if user_exists %}
-<div class="error">
-	<p>Det finnes allerede en bruker med dette nicket</p>
-</div>
-{% endif%}
-{% if password_mismatch %}
-<div class="error">
-	<p>Passordene du skrev inn stemte ikke overens</p>
-</div>
-{% endif%}
-{% if error %}
-<div class="error">
-	<p>Noe gikk galt, se over informasjonen nedenfor og prøv igjen</p>
-</div>
-{% endif%}
+<h2>{% trans "Sign up!" %}</h2>
 
 <form action="{% url 'register' %}" method="POST">
 
 {% bootstrap_form form%}
 
 {% buttons %}
-<button type="submit" class="btn btn-primary">{% trans "Register user" %}</button>
+<button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
 {% endbuttons%}
 
 </form>
