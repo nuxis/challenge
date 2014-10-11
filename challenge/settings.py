@@ -5,14 +5,6 @@ import os
 PROJECT_DIR = os.path.dirname(__file__)
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
-ADMINS = (
-     ('Mathias Boehn Grytemark', 'mathias@nuxis.org'),
-)
-
-MANAGERS = ADMINS
-
 
 DATABASES = {
     'default': {
@@ -88,3 +80,5 @@ try:
 except ImportError as e:
     print(e)
     pass
+
+TEMPLATE_DEBUG = DEBUG

@@ -9,12 +9,19 @@
 # Set DEBUG to False to run in production!
 DEBUG = True
 
+# Need to set allowed hostnames when running with DEBUG=False.
+# See https://docs.djangoproject.com/en/1.7/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
+
+# These persons will be emailed with exception information when running with DEBUG=False.
+# See https://docs.djangoproject.com/en/1.7/ref/settings/#admins
 #ADMINS = (
 #	 ('Mr. Your Name', 'email@example.com'),
 #)
 #MANAGERS = ADMINS
 
-
+# The project is currently tested with sqlite3 and mysql.
+# See https://docs.djangoproject.com/en/1.7/ref/settings/#databases for more information.
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.sqlite3',

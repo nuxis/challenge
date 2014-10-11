@@ -4,6 +4,13 @@
 Normally used for PsyChic Challenge at Polar Party.
 
 
+# Installing
+
+Tested with Python 3 and Apache 2 with modwsgi.
+
+We recommend running challenge in a virtualenv.
+
+
 # Background and history
 
 ## PsyChic
@@ -75,6 +82,3 @@ And of course: Thanks to all those who enjoys PsyChic Challenge!
 'challenge' is licensed under Affero General Public License, see the LICENSE-file.
 Django is licensed under the BSD license, see the file LICENSE-Django.
 
-# Installing
-
-Recommended to install in a virtualenv. See requirements.txt for required pip packages.
