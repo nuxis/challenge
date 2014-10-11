@@ -11,12 +11,15 @@
 
 <h2>{% trans "Score" %}</h2>
 
-<table>
+<table class="table table-bordered table-striped">
+	<thead>
 	<tr>
 		<th>{% trans "User" %}</th>
 		<th>{% trans "Completed level" %}</th>
 		<th>{% trans "Time" %}</th>
 	</tr>
+	</thead>
+	<tbody>
 	{% for s in score %}
 	<tr>
 		<td>{{s.user.username}} ({{s.user.first_name}} {{s.user.last_name}})</td>
@@ -24,6 +27,7 @@
 		<td>{{s.updated|date:'d.m.Y H:i:s'}}</td>
 	</tr>
 	{% endfor %}
+	</tbody>
 </table>
 
 
