@@ -18,7 +18,14 @@ DATABASES = {
 }
 
 TIME_ZONE = 'Europe/Oslo'
+
 LANGUAGE_CODE = 'en'
+
+from django.utils.translation import ugettext_lazy as _
+LANGUAGES = (
+	('nb', _('Norwegian bokmål')),
+	('en', _('English')),
+)
 
 SITE_ID = 1
 
@@ -58,6 +65,10 @@ INSTALLED_APPS = (
     'levels',
     'core',
     'stats',
+)
+
+LOCALE_PATHS = (
+   os.path.join(PROJECT_DIR, "..", "locale/"),
 )
 
 STATICFILES_DIRS = (
