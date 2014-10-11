@@ -11,7 +11,8 @@
 
 <h2>{{getnum}} {% trans "last attempts" %}</h2>
 
-<table>
+<table class="table table-bordered table-striped">
+	<thead>
 	<tr>
 		<th>{% trans "User" %}</th>
 		<th>{% trans "Time" %}</th>
@@ -19,6 +20,8 @@
 		<th>{% trans "Answer" %}</th>
 		<th>{% trans "Correct?" %}</th>
 	</tr>
+	</thead>
+	<tbody>
 	{% for a in attempts %}
 	<tr>
 		<td>{{a.user.username}} ({{s.user.first_name}} {{s.user.last_name}})</td>
@@ -28,6 +31,7 @@
 		<td>{{a.correct|yesno}}</td>
 	</tr>
 	{% endfor %}
+	</tbody>
 </table>
 
 
