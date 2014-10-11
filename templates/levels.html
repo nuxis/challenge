@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load i18n %}
+{% load bootstrap3 %}
 
 {% block style %}
 {% if level.css %}
@@ -14,13 +15,6 @@
 <h2>{% trans "Level" %} {{level.pk}}</h2>
 
 
-{% if error %}
-<div class="error">
-	<p>{{error}}</p>
-</div>
-{% endif %}
-
-
 <p>{% autoescape off %}{{level.question}}{% endautoescape %}</p>
 
 {% if level.sourcehint %}
@@ -31,7 +25,7 @@
 <img src="{{level.imageurl}}" />
 {% endif %}
 
-<form action="." method="POST">
+<form action="{% url 'index' %}" method="POST">
 <table style="width: 40%;">
 	<tr>
 		<td>

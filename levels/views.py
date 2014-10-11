@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 from django.utils.translation import ugettext_lazy as _
+from django.contrib import messages
 
 from core.models import Config
 from levels.models import Level, Score, Attempt
@@ -55,7 +56,7 @@ def index(request):
             else:
                 attempt.correct = False
                 attempt.save ()
-                c['error'] = _('Wrong answer! Try again :-D')
+                messages.error (request, _('Wrong answer! Try again :-D'))
         else:
             for level_answer in level.answer.split('||'):
                 if answer == level_answer.upper():
@@ -64,7 +65,7 @@ def index(request):
                     attempt.correct = True
                     attempt.save ()
                     return HttpResponseRedirect('/')
-            c['error'] = _('Wrong answer! Try again :-D')
+            messages.error (request, _('Wrong answer! Try again :-D'))
             attempt.correct = False
             attempt.save ()
             
