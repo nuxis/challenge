@@ -7,8 +7,8 @@ from levels.models import Score, Attempt
 # score can be accessed by anyone
 def score(request):
     c = {}
-    c['score'] = Score.objects.order_by ('-max_level', 'updated')
-    return render (request, "score.html", c)
+    c['score'] = Score.objects.order_by('-max_level', 'updated')
+    return render(request, "score.html", c)
 
 # attemps should only be visible to superusers
 @user_passes_test(lambda u: u.is_superuser)
@@ -18,4 +18,4 @@ def attempts(request, getnum=None):
     c = {}
     c['getnum'] = getnum
     c['attempts'] = Attempt.objects.order_by('-pk')[:getnum]
-    return render (request, "attempts.html", c)
+    return render(request, "attempts.html", c)
