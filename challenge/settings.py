@@ -23,8 +23,8 @@ LANGUAGE_CODE = 'en'
 
 from django.utils.translation import ugettext_lazy as _
 LANGUAGES = (
-	('nb', _('Norwegian bokmål')),
-	('en', _('English')),
+    ('nb', _('Norwegian bokmål')),
+    ('en', _('English')),
 )
 
 SITE_ID = 1
@@ -41,15 +41,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 LOCALE_PATHS = (
-    os.path.join(PROJECT_DIR, "locale/"), 
+    os.path.join(PROJECT_DIR, "locale/"),
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-     'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'challenge.urls'
@@ -69,11 +69,11 @@ INSTALLED_APPS = (
 )
 
 STATICFILES_DIRS = (
-   os.path.join(PROJECT_DIR, "..", "files/"),
+    os.path.join(PROJECT_DIR, "..", "files/"),
 )
 
 TEMPLATE_DIRS = (
-     os.path.join(PROJECT_DIR, "..", "templates"),
+    os.path.join(PROJECT_DIR, "..", "templates"),
 )
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "media/")
 
@@ -87,6 +87,5 @@ try:
     from challenge.settings_local import *
 except ImportError as exc:
     print(exc)
-    pass
 
 TEMPLATE_DEBUG = DEBUG
