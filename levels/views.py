@@ -2,89 +2,89 @@
 
 from django.contrib.auth.decorators import login_required
 
-from challenge.core.common import prtr
+from core.common import prtr
 
-from challenge.levels.models import Level, Score, Attempt
+from levels.models import Level, Score, Attempt
 
 from django.http import HttpResponseRedirect, Http404
 
 @login_required
 def index(request):
-	c = {}
-	try:
-		end_level = Level.objects.latest('pk')
-	except Level.DoesNotExist:
-		raise Http404
+    c = {}
+    try:
+        end_level = Level.objects.latest('pk')
+    except Level.DoesNotExist:
+        raise Http404
 
 
-	from challenge.core.models import Config
-	try:
-		config = Config.objects.get(pk=1)
-	except Config.DoesNotExist:
-		raise Http404
-	c['config'] = config
-	if not config.active:
-		return prtr ("closed.html", c, request)
+    from core.models import Config
+    try:
+        config = Config.objects.get(pk=1)
+    except Config.DoesNotExist:
+        raise Http404
+    c['config'] = config
+    if not config.active:
+        return prtr ("closed.html", c, request)
 
-	user = request.user
+    user = request.user
 
-	try:
-		score = Score.objects.get(user=user)
-	except:
-		score = Score(user=user, max_level=0)
+    try:
+        score = Score.objects.get(user=user)
+    except:
+        score = Score(user=user, max_level=0)
 
-	
-	if score.max_level == end_level.pk:
-		return HttpResponseRedirect('/done/')
+    
+    if score.max_level == end_level.pk:
+        return HttpResponseRedirect('/done/')
 
-	level = score.max_level + 1
-	level = Level.objects.get(pk=level)
+    level = score.max_level + 1
+    level = Level.objects.get(pk=level)
 
-	if request.method == "POST":
-		answer = unicode(request.POST['answer']).upper()
-		attempt = Attempt (user=user, level=level, answer=answer)
-		if not level.multianswer:
-			if answer == unicode(level.answer).upper():
-				score.max_level += 1
-				score.save()
-				attempt.correct = True
-				attempt.save ()
-				return HttpResponseRedirect('/')
-			else:
-				attempt.correct = False
-				attempt.save ()
-				c['error'] = 'Feil svar! Prøv igjen :-D'
-		else:
-			for level_answer in unicode(level.answer).split('||'):
-				if answer == unicode(level_answer).upper():
-					score.max_level += 1
-					score.save()
-					attempt.correct = True
-					attempt.save ()
-					return HttpResponseRedirect('/')
-			c['error'] = 'Feil svar! Prøv igjen :-D'
-			attempt.correct = False
-			attempt.save ()
-			
-	c['level'] = level
+    if request.method == "POST":
+        answer = request.POST['answer'].upper()
+        attempt = Attempt (user=user, level=level, answer=answer)
+        if not level.multianswer:
+            if answer == level.answer.upper():
+                score.max_level += 1
+                score.save()
+                attempt.correct = True
+                attempt.save ()
+                return HttpResponseRedirect('/')
+            else:
+                attempt.correct = False
+                attempt.save ()
+                c['error'] = 'Feil svar! Prøv igjen :-D'
+        else:
+            for level_answer in level.answer.split('||'):
+                if answer == level_answer.upper():
+                    score.max_level += 1
+                    score.save()
+                    attempt.correct = True
+                    attempt.save ()
+                    return HttpResponseRedirect('/')
+            c['error'] = 'Feil svar! Prøv igjen :-D'
+            attempt.correct = False
+            attempt.save ()
+            
+    c['level'] = level
 
-	return prtr("levels.html", c, request)
+    return prtr("levels.html", c, request)
 
 @login_required
 def done(request):
-	c = {}
+    c = {}
 
-	try:
-		score = Score.objects.get(user=request.user)
-	except:
-		return HttpResponseRedirect('/')
-		
+    try:
+        score = Score.objects.get(user=request.user)
+    except:
+        return HttpResponseRedirect('/')
+        
 
-	end_level = Level.objects.latest('pk')
-	if score.max_level == end_level.pk:
-			score = Score.objects.get(user=request.user)
-			c['score'] = score
+    end_level = Level.objects.latest('pk')
+    if score.max_level == end_level.pk:
+            score = Score.objects.get(user=request.user)
+            c['score'] = score
 
-			return prtr ("done.html", c, request)
-	else:
-		return HttpResponseRedirect('/')
+            return prtr ("done.html", c, request)
+    else:
+        return HttpResponseRedirect('/')

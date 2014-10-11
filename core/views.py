@@ -2,8 +2,8 @@
 
 
 def register(request):
-	from challenge.core.common import prtr
-	from challenge.core.forms import UserForm
+	from core.common import prtr
+	from core.forms import UserForm
 	from django.contrib.auth.models import User
 	from django.contrib.auth import login, authenticate
 	from django.http import HttpResponseRedirect
