@@ -6,9 +6,7 @@ Normally used for PsyChic Challenge at Polar Party.
 
 # Installing
 
-Tested with Python 3 and Apache 2 with modwsgi.
-
-We recommend running challenge in a virtualenv.
+See https://github.com/Pr0jectX/challenge/wiki/Installing-challenge-0.1 for more information on installing challenge.
 
 
 # Background and history
