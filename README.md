@@ -72,11 +72,10 @@ probably forgotten...
 * Bjørn Gustav Baklid
 * Ludvig Anderssen
 * Bjørn Elias Hesthamar
+* Kristoffer Dalby
 
 And of course: Thanks to all those who enjoys PsyChic Challenge!
 
 # License
 
-'challenge' is licensed under Affero General Public License, see the LICENSE-file.
-Django is licensed under the BSD license, see the file LICENSE-Django.
-
+'challenge' is released under The MIT License (MIT).
