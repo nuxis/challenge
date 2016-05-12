@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'levels',
     'core',
     'stats',
+    'debug_toolbar', # for debugging
 )
 
 
