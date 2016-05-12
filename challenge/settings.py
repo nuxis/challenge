@@ -1,8 +1,10 @@
 # Django settings for challenge project.
 
-# for dynamic settings
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-PROJECT_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+
 
 DEBUG = False
 
@@ -36,12 +38,8 @@ ADMIN_MEDIA_PREFIX = '/amedia/'
 
 SECRET_KEY = 't+q))2q)e6k6*ggeqw*bl9q3%_t-(e3#%!v$yl-l(s^rtabf!)'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
 LOCALE_PATHS = (
-    os.path.join(PROJECT_DIR, "locale/"),
+    os.path.join(BASE_DIR, "locale/"),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,16 +66,31 @@ INSTALLED_APPS = (
     'stats',
 )
 
+
+TEMPLATES = [
+        {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [os.path.join(BASE_DIR, 'templates')],
+                'APP_DIRS': True,
+                'OPTIONS': {
+                        'context_processors': [
+                                'django.template.context_processors.debug',
+                                'django.template.context_processors.request',
+                                'django.contrib.auth.context_processors.auth',
+                                'django.contrib.messages.context_processors.messages',
+                        ],
+                },
+        },
+]
+
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, "..", "files/"),
+    os.path.join(BASE_DIR, "files/"),
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, "..", "templates"),
-)
-MEDIA_ROOT = os.path.join(PROJECT_DIR, "media/")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, "..", "static/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
 STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
@@ -87,5 +100,3 @@ try:
     from challenge.settings_local import *
 except ImportError as exc:
     print(exc)
-
-TEMPLATE_DEBUG = DEBUG

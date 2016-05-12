@@ -16,7 +16,7 @@ class Level(models.Model):
 
 
 class Score(models.Model):
-    user = models.ForeignKey(User, unique=True, editable=False)
+    user = models.OneToOneField(User, editable=False)
     max_level = models.IntegerField()
     updated = models.DateTimeField(auto_now=True)
 
