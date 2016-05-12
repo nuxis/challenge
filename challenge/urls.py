@@ -1,11 +1,11 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
 
 from django.contrib import admin
 admin.autodiscover()
 
 from django.conf import settings
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'levels.views.index', name='index'),
     url(r'^done/$', 'levels.views.done', name='done'),
@@ -21,4 +21,4 @@ urlpatterns = patterns('',
     url(r'^score/$', 'stats.views.score', name='score'),
     url(r'^attempts/$', 'stats.views.attempts', name='attempts'),
     url(r'^attempts/(?P<getnum>\d*)/$', 'stats.views.attempts'),
-)
+]
