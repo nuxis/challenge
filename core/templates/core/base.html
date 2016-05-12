@@ -1,13 +1,14 @@
 {% extends 'bootstrap3/bootstrap3.html' %}
 {% load bootstrap3 %}
 {% load i18n %}
+{% load staticfiles %}
 
 {% block bootstrap3_title %}
 challenge
 {% endblock %}
 
 {% block bootstrap3_extra_head %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
 
 {% block style %}
 {# this block is for level specific css #}
