@@ -8,7 +8,7 @@ from levels.models import Score, Attempt
 def score(request):
     context = {}
     context['score'] = Score.objects.order_by('-max_level', 'updated')
-    return render(request, "score.html", context)
+    return render(request, "stats/score.html", context)
 
 # attemps should only be visible to superusers
 @user_passes_test(lambda u: u.is_superuser)
@@ -18,4 +18,4 @@ def attempts(request, getnum=None):
     context = {}
     context['getnum'] = getnum
     context['attempts'] = Attempt.objects.order_by('-pk')[:getnum]
-    return render(request, "attempts.html", context)
+    return render(request, "stats/attempts.html", context)
