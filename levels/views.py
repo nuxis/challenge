@@ -10,6 +10,8 @@ from core.models import Config
 from levels.models import Level, Score, Attempt
 from levels.forms import AnswerForm
 
+from django.views.generic import ListView
+
 @login_required
 def index(request):
     context = {}
@@ -89,3 +91,8 @@ def done(request):
         return render(request, "done.html", context)
     else:
         return HttpResponseRedirect('/')
+
+
+
+class LevelList(ListView):
+    model = Level
