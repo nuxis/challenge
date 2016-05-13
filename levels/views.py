@@ -22,12 +22,12 @@ def index(request):
     context['config'] = config
 
     if not config.active:
-        return render(request, "closed.html", context)
+        return render(request, "levels/closed.html", context)
 
     try:
         end_level = Level.objects.latest('pk')
     except Level.DoesNotExist:
-        return render(request, "closed.html", context)
+        return render(request, "levels/closed.html", context)
 
     user = request.user
 
@@ -71,7 +71,7 @@ def index(request):
 
     context['level'] = level
     context['form'] = AnswerForm()
-    return render(request, "levels.html", context)
+    return render(request, "levels/levels.html", context)
 
 @login_required
 def done(request):
@@ -86,6 +86,6 @@ def done(request):
     if score.max_level == end_level.pk:
         score = Score.objects.get(user=request.user)
         context['score'] = score
-        return render(request, "done.html", context)
+        return render(request, "levels/done.html", context)
     else:
         return HttpResponseRedirect('/')
