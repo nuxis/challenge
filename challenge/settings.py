@@ -93,6 +93,10 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
+BOOTSTRAP3 = {
+    'css_url': 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css',
+}
+
 try:
     from challenge.settings_local import *
 except ImportError as exc:
