@@ -23,7 +23,7 @@
 		</div>
 		<div class="panel-body panel-minheight">
 			{% if status != "completed" %}
-			<a role="button" href="#" class="btn btn-primary">Do it!</a>
+			<a role="button" href="{% url 'level' level.pk %}" class="btn btn-primary">Do it!</a>
 			{% endif %}
 		</div>
 	</div>

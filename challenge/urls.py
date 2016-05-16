@@ -14,7 +14,7 @@ import stats.views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', levels.views.index, name='index'),
+    url(r'^$', core.views.index, name='index'),
     url(r'^done/$', levels.views.done, name='done'),
 
     url(r'^media/(?P<path>.*)$', django.views.static.serve,
@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^attempts/(?P<getnum>\d*)/$', stats.views.attempts),
 
     url(r'^levels/$', levels.views.LevelList.as_view(), name='levellist'),
+    url(r'^levels/(?P<pk>\d*)/$', levels.views.level, name='level'),
 ]

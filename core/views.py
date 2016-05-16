@@ -1,11 +1,18 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 from core.forms import UserForm
+
+
+@login_required
+def index(request):
+    return redirect('levellist')
+
 
 def register(request):
     context = {
