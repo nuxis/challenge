@@ -1,13 +1,21 @@
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from core.models import Config
 from levels.models import Level
+
+import re
 
 class ClosedMiddleware(object):
     def process_request(self, request):
 
         if hasattr(request, 'user') and request.user.is_staff:
+            return None
+
+        if re.match('^/admin/', request.path_info):
+            return None
+        if re.match('^/__debug__/', request.path_info) and settings.DEBUG:
             return None
 
         if Config.objects.all().count() != 1:
