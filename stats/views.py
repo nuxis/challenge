@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
+from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 from levels.models import Score, Attempt
 
 # score can be accessed by anyone
-def score(request):
-    context = {}
-    context['score'] = Score.objects.order_by('-max_level', 'updated')
-    return render(request, "stats/score.html", context)
+class ScoreList(ListView):
+#    queryset = User.objects.filter(is_superuser=False).filter(is_staff=False)
+    model = User
+    template_name = 'stats/score_list.html'
+
 
 # attemps should only be visible to superusers
 @user_passes_test(lambda u: u.is_superuser)

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^logout/$', django.contrib.auth.views.logout_then_login,
         name="logout_then_login"),
     url(r'^register/$', core.views.register, name="register"),
-    url(r'^score/$', stats.views.score, name='score'),
+    url(r'^score/$', stats.views.ScoreList.as_view(), name='score'),
     url(r'^attempts/$', stats.views.attempts, name='attempts'),
     url(r'^attempts/(?P<getnum>\d*)/$', stats.views.attempts),
 

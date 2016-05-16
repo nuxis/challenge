@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% load staffonly %}
+
+{% block extrahead %}
+	<meta http-equiv="refresh" content="5" />
+{% endblock %}
+
+{% block content %}
+
+<h1>{% trans "Score" %}</h1>
+
+{% if object_list %}
+<table class="table table-striped table-bordered">
+
+	<thead>
+		<tr>
+			<th>{% trans "User" %}</th>
+			<th>{% trans "Score" %}</th>
+			{% if user.is_superuser or user.is_staff %}
+			<th>{% trans "Staff" %}</th>
+			<th>{% trans "Superuser" %}</th>
+			{% endif %}
+		</tr>
+	</thead>
+
+	<tbody>
+		{% staffonly object_list as object_list%}
+		{% for score_user in object_list %}
+		<tr>
+			<td>{{score_user.username}} ({{score_user.first_name}} {{score_user.last_name}})</td>
+			<td>{{score_user.userprofile.get_score}}</td>
+			{% if user.is_superuser or user.is_staff %}
+			<td>{{score_user.is_staff|yesno}}</td>
+			<td>{{score_user.is_superuser|yesno}}</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>		
+
+</table>
+
+{% else %}
+<div class="alert alert-warning"><p>{% trans "No users registered" %}</p></div>
+{% endif %}
+{% endblock %}
