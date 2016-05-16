@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import ugettext_lazy as _
 
 from core.models import Config
 from levels.models import Level
@@ -22,5 +23,11 @@ class ClosedMiddleware(object):
         return None
 
     def closed(self, request):
-        c = {'config': Config.objects.get(pk=1)}
+        try:
+            config = Config.objects.get(pk=1)
+        except:
+            config = {'welcometext': _('This site is not configured yet.')}
+
+        c = {}
+        c['config'] = config
         return render(request, 'core/closed.html', c)
