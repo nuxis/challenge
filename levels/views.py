@@ -27,6 +27,7 @@ def level(request, pk):
         attempt = Attempt(user=user, level=level, answer=answer)
 
         if level.check_answer(answer):
+            level.set_completed(user)
             attempt.correct = True
             messages.success(request, _('Correct answer. Congrats!'))
             attempt.save()

@@ -6,6 +6,7 @@ class Level(models.Model):
     description = models.CharField(max_length=128)
 
     points = models.IntegerField()
+    completed = models.IntegerField()
 
     question = models.TextField()
     multianswer = models.BooleanField(default=False)
@@ -17,6 +18,10 @@ class Level(models.Model):
 
     def __str__(self):
         return self.name
+
+    def set_completed(self, user):
+        self.completed += 1
+        self.save()
 
     def check_answer(self, answer):
         answer = answer.upper()
