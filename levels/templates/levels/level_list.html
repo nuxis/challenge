@@ -22,6 +22,7 @@
 			<h3 class="panel-title">{{level.name}}</h3>
 		</div>
 		<div class="panel-body panel-minheight">
+			{% if level.description %}<p>{{level.description}}</p>{% endif %}
 			{% if status != "completed" %}
 			<a role="button" href="{% url 'level' level.pk %}" class="btn btn-primary">Do it!</a>
 			{% endif %}
