@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+
+{% if object_list %}
+
+<div class="row">
+{% for level in object_list %}
+<div class="col-md-3">
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{level.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<p>Completed: 123</p>
+			<a role="button" href="#" class="btn btn-primary">Do it!</a>
+		</div>
+	</div>
+</div>
+{% endfor %}
+</div>
+
+{% else %}
+	<div class="alert alert-danger" role="alert">{% trans "No levels defined." %}</div>
+{% endif%}
+
+{% endblock %}
