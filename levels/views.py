@@ -23,28 +23,18 @@ def level(request, pk):
         return redirect('levellist')
 
     if request.method == "POST":
-        answer = request.POST['answer'].upper()
+        answer = request.POST['answer']
         attempt = Attempt(user=user, level=level, answer=answer)
-        if not level.multianswer:
-            if answer == level.answer.upper():
-                attempt.correct = True
-                attempt.save()
-                messages.success(request, _('Correct answer. Congrats!'))
-                return redirect('levellist')
-            else:
-                attempt.correct = False
-                attempt.save()
-                messages.error(request, _('Wrong answer! Try again :-D'))
+
+        if level.check_answer(answer):
+            attempt.correct = True
+            messages.success(request, _('Correct answer. Congrats!'))
+            attempt.save()
+            return redirect('levellist')
         else:
-            for level_answer in level.answer.split('||'):
-                if answer == level_answer.upper():
-                    attempt.correct = True
-                    attempt.save()
-                    messages.success(request, _('Correct answer. Congrats!'))
-                    return redirect('levellist')
-            messages.error(request, _('Wrong answer! Try again :-D'))
             attempt.correct = False
             attempt.save()
+            messages.error(request, _('Wrong answer! Try again :-D'))
 
     context['level'] = level
     context['form'] = AnswerForm()
