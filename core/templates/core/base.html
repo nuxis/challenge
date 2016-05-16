@@ -30,7 +30,7 @@ challenge
 		<div class="collapse navbar-collapse">
 			{% if user.is_authenticated %}
 			<ul class="nav navbar-nav navbar-right">
-				<li><a>{{user.username}}</a></li>
+				<li><a>{{user.username}} <span class="badge">{{user.userprofile.get_score}}</span></a></li>
 				{% if user.is_superuser %}
 				<li><a href="{% url 'score' %}">{% trans "Score" %}</a></li>
 				<li><a href="{% url 'attempts' %}">{% trans "Attempts" %}</a></li>

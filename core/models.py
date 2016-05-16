@@ -1,6 +1,12 @@
 from django.db import models
 from solo.models import SingletonModel
 from django.utils.translation import ugettext as _
+from django.db.models import Sum
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from django.contrib.auth.models import User
+from levels.models import Score
 
 class Config(SingletonModel):
     welcometext = models.TextField(blank=True)
@@ -12,3 +18,16 @@ class Config(SingletonModel):
 
     class Meta:
          verbose_name = _("Site configuration")
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def get_score(self):
+        return Score.objects.filter(user=self.user).aggregate(Sum('points'))['points__sum']
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, signal, created, **kwargs):
+    if created:
+        UserProfile(user=instance).save()

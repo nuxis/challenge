@@ -23,6 +23,9 @@ class Level(models.Model):
         self.completed += 1
         self.save()
 
+        score = Score(user=user, level=self, points=self.points)
+        score.save()
+
     def check_answer(self, answer):
         answer = answer.upper()
         level_answer = self.answer.upper()
@@ -48,8 +51,8 @@ class Level(models.Model):
 
 
 class Score(models.Model):
-    user = models.OneToOneField(User)
-    level = models.OneToOneField(Level)
+    user = models.ForeignKey(User)
+    level = models.ForeignKey(Level)
     points = models.IntegerField()
     awarded = models.DateTimeField(auto_now_add=True)
 
