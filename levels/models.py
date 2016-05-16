@@ -12,7 +12,18 @@ class Level(models.Model):
     css = models.TextField(blank=True)
 
     def __str__(self):
-        return str(self.pk) + " - " + self.name
+        return self.name
+
+    def get_user_status(self, user):
+        # XXX: this could need optimizing later. is called from a templatetag, and runs a query per level or more...
+        
+        attempts = self.attempt_set
+        if attempts.filter(correct=True):
+            return "completed"
+        if attempts.count() > 0:
+            return "tried"
+        else:
+            return False
 
 
 class Score(models.Model):

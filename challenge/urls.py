@@ -28,4 +28,6 @@ urlpatterns = [
     url(r'^score/$', stats.views.score, name='score'),
     url(r'^attempts/$', stats.views.attempts, name='attempts'),
     url(r'^attempts/(?P<getnum>\d*)/$', stats.views.attempts),
+
+    url(r'^levels/$', levels.views.LevelList.as_view(), name='levellist'),
 ]

@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect, Http404
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from core.models import Config
 from levels.models import Level, Score, Attempt
 from levels.forms import AnswerForm
@@ -89,3 +92,7 @@ def done(request):
         return render(request, "levels/done.html", context)
     else:
         return HttpResponseRedirect('/')
+
+
+class LevelList(LoginRequiredMixin, ListView):
+    model = Level
