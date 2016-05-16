@@ -1,42 +1,8 @@
-
-
 body
 {
-/*	font-family: verdana, sans-serif, arial; OLD */
-
 	padding-top: 50px;
-
-/*	background-color: #150E3A; OLD */
-/*	background-color: #7caedd; */
-
-/*	color: #909090; OLD */
-/*	color: black; */
 }
 
-
-table.login
-{
-	margin: 0 auto;
-	margin-top: 30px;
-}
-input.width_submit
-{
-	width: 100%;
-}
-
-div.error
-{
-	margin: 0 auto;
-	margin-top: 15px;
-
-	width: 450px;
-	
-	background-color: #ff4500;
-	color: black;
-	padding: 5px;
-	text-align: center;
-	font-weight: bold;
-}
 
 .panel-minheight
 {
