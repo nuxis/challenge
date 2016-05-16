@@ -12,7 +12,7 @@ class Level(models.Model):
     css = models.TextField(blank=True)
 
     def __str__(self):
-        return str(self.pk) + " - " + self.name
+        return self.name
 
 
 class Score(models.Model):
