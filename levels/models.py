@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 
 class Level(models.Model):
     name = models.CharField(max_length=64)
+    description = models.CharField(max_length=128)
+
     question = models.TextField()
     multianswer = models.BooleanField(default=False)
     answer = models.CharField(max_length=128)
@@ -24,6 +26,9 @@ class Level(models.Model):
             return "tried"
         else:
             return False
+
+    class Meta():
+        managed = True
 
 
 class Score(models.Model):
