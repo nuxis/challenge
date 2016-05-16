@@ -1,27 +1,36 @@
 {% extends "core/base.html" %}
 {% load i18n %}
 {% load bootstrap3 %}
-
+{% load levelstatus %}
 
 {% block content %}
 
 {% if object_list %}
 
-<div class="row">
 {% for level in object_list %}
+{% if forloop.counter|divisibleby:4 %}<div class="row">{% endif %}
+{% with status=level|level_user_status:user%}
 <div class="col-md-3">
-	<div class="panel">
+	{% if status == "tried" %}
+		<div class="panel panel-warning">
+	{% elif status == "completed" %}
+		<div class="panel panel-success">
+	{% else %}
+		<div class="panel panel-info">
+	{% endif %}
 		<div class="panel-heading">
 			<h3 class="panel-title">{{level.name}}</h3>
 		</div>
-		<div class="panel-body">
-			<p>Completed: 123</p>
+		<div class="panel-body panel-minheight">
+			{% if status != "completed" %}
 			<a role="button" href="#" class="btn btn-primary">Do it!</a>
+			{% endif %}
 		</div>
 	</div>
 </div>
+{% if forloop.counter|divisibleby:4 %}</div>{% endif %}
+{% endwith %}
 {% endfor %}
-</div>
 
 {% else %}
 	<div class="alert alert-danger" role="alert">{% trans "No levels defined." %}</div>

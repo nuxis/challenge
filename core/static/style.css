@@ -38,3 +38,7 @@ div.error
 	font-weight: bold;
 }
 
+.panel-minheight
+{
+	min-height: 70px;
+}
