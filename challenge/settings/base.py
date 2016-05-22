@@ -5,21 +5,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-
 DEBUG = False
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'challenge.sqlite3',
-    }
-}
-
-
 TIME_ZONE = 'Europe/Oslo'
-
 LANGUAGE_CODE = 'en'
+
 
 from django.utils.translation import ugettext_lazy as _
 LANGUAGES = (
@@ -27,14 +18,13 @@ LANGUAGES = (
     ('en', _('English')),
 )
 
+
 SITE_ID = 1
 
 USE_I18N = True
 
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/amedia/'
-
-SECRET_KEY = 't+q))2q)e6k6*ggeqw*bl9q3%_t-(e3#%!v$yl-l(s^rtabf!)'
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale/"),
@@ -64,7 +54,6 @@ INSTALLED_APPS = (
     'levels',
     'core',
     'stats',
-    'debug_toolbar', # for debugging
 )
 
 
@@ -96,8 +85,3 @@ LOGIN_REDIRECT_URL = '/'
 BOOTSTRAP3 = {
     'css_url': 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/superhero/bootstrap.min.css',
 }
-
-try:
-    from challenge.settings_local import *
-except ImportError as exc:
-    print(exc)

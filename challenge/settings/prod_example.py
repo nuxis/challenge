@@ -1,17 +1,8 @@
-
-# Some settings have to be set, some not... Give it a try.
-
-# Directories:
-# media: workdir + /media/
-# static: workdir + /static/
-
-
-# Set DEBUG to False to run in production!
-DEBUG = True
+DEBUG = False
 
 # Need to set allowed hostnames when running with DEBUG=False.
 # See https://docs.djangoproject.com/en/1.7/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['challenge.example.com']
 
 # These persons will be emailed with exception information when running with DEBUG=False.
 # See https://docs.djangoproject.com/en/1.7/ref/settings/#admins
@@ -19,9 +10,6 @@ ALLOWED_HOSTS = []
 #	 ('Mr. Your Name', 'email@example.com'),
 #)
 #MANAGERS = ADMINS
-
-# The project is currently tested with sqlite3 and mysql.
-# See https://docs.djangoproject.com/en/1.7/ref/settings/#databases for more information.
 
 DATABASES = {
     'default': {
@@ -41,4 +29,4 @@ LANGUAGE_CODE = 'en'
 
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 't+q))2q)e6k6*ggeqw*bl9q3%_t-(e3#%!v$yl-l(s^rtabf!)'
+SECRET_KEY = '3lZUOCw$KSq.L56B3tMDVrjF7rGRZDLUK3N1Jk38X6amPWkOQvycehcSLk1uI/CjvjGaIEPrc9zO79PNTvJyAgfx9BSzt.'
