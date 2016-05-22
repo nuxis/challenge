@@ -6,3 +6,6 @@ challenge.sqlite3
 
 # ignore virtualenv
 env/
+
+# ignore production settings if they get in here
+challenge/settings/prod.py
