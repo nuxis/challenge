@@ -1,6 +1,0 @@
-Django==1.9.6
-PyMySQL==0.7.2
-django-bootstrap3==7.0.1
-django-debug-toolbar==1.4
-django-solo==1.1.2
-sqlparse==0.1.19
