@@ -3,3 +3,6 @@ settings_local.py
 .*.swp
 static/
 challenge.sqlite3
+
+# ignore virtualenv
+env/
