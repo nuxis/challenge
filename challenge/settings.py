@@ -8,16 +8,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'challenge',
-        'USER': 'challenge',
-        'PASSWORD': 'challenge',
-        'HOST': '127.0.0.1',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'challenge.sqlite3',
     }
 }
+
 
 TIME_ZONE = 'Europe/Oslo'
 

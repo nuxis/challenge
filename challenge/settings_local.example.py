@@ -22,12 +22,18 @@ ALLOWED_HOSTS = []
 
 # The project is currently tested with sqlite3 and mysql.
 # See https://docs.djangoproject.com/en/1.7/ref/settings/#databases for more information.
+
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': 'challenge.sqlite3',
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'challenge',
+        'USER': 'challenge',
+        'PASSWORD': 'challenge',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    }
 }
+
 
 
 TIME_ZONE = 'Europe/Oslo'
