@@ -1,3 +1,5 @@
+from challenge.settings.base import *
+
 DEBUG = False
 
 # Need to set allowed hostnames when running with DEBUG=False.
