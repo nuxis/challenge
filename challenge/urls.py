@@ -17,9 +17,6 @@ urlpatterns = [
     url(r'^$', core.views.index, name='index'),
     url(r'^done/$', levels.views.done, name='done'),
 
-    url(r'^media/(?P<path>.*)$', django.views.static.serve,
-        {'document_root': settings.MEDIA_ROOT}),
-
     url(r'^login/$', django.contrib.auth.views.login,
         {'template_name': 'core/login.html'}, name="login"),
     url(r'^logout/$', django.contrib.auth.views.logout_then_login,
