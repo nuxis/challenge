@@ -5,8 +5,8 @@ class Level(models.Model):
     name = models.CharField(max_length=64)
     description = models.CharField(max_length=128)
 
-    points = models.IntegerField()
-    completed = models.IntegerField()
+    points = models.IntegerField(default=1)
+    completed = models.IntegerField(default=0)
 
     question = models.TextField()
     multianswer = models.BooleanField(default=False)
