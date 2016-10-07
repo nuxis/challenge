@@ -40,16 +40,16 @@
 {% else %}
 <div class="col-md-3">
 		<div class="panel panel-danger">
-		<div class="panel-heading">
+			<div class="panel-heading">
 				<h3 class="panel-title">{{level.name}}</h3>
-		</div>
-		<div class="panel-body panel-minheight">
-			{% blocktrans count count=level.completed %}
-			<p><small>Completed by {{count}} user.</small></p>
-			{% plural %}
-			<p><small>Completed by {{count}} users.</small></p>
-			{% endblocktrans %}
-
+			</div>
+			<div class="panel-body panel-minheight">
+				{% blocktrans count count=level.completed %}
+				<p><small>Completed by {{count}} user.</small></p>
+				{% plural %}
+				<p><small>Completed by {{count}} users.</small></p>
+				{% endblocktrans %}
+			</div>
 		</div>
 </div>
 {% endif %}
