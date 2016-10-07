@@ -35,7 +35,7 @@
 			<td>{{score_user.is_staff|yesno}}</td>
 			<td>{{score_user.is_superuser|yesno}}</td>
 			{% endif %}
-            <td>{{score_user.userprofile.latest_correct_answer}}</td>
+            <td>{{score_user.userprofile.latest_correct_answer|date:'c'}}</td>
 		</tr>
 		{% endfor %}
 	</tbody>		
