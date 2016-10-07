@@ -22,7 +22,7 @@ def level(request, pk):
     if level.get_user_status(user) == "completed":
         return redirect('levellist')
 
-    if user.userprofile.score < level.points_required:
+    if user.userprofile.score < level.required_points:
         return redirect('levellist')
 
     if request.method == "POST":
