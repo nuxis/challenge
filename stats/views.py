@@ -11,7 +11,6 @@ class ScoreList(ListView):
 #    queryset = User.objects.filter(is_superuser=False).filter(is_staff=False)
     model = User
     template_name = 'stats/score_list.html'
-    ordering = ['-userprofile.get_score', '-userprofile.latest_correct_answer']
 
 
 # attemps should only be visible to superusers
