@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import datetime
+from django.utils import timezone
 
 class Level(models.Model):
     name = models.CharField(max_length=64)
@@ -66,7 +66,7 @@ def update_userprofile_score(sender, instance, signal, created, **kwargs):
     if created:
         user = instance.user
         userprofile = user.userprofile
-        userprofile.latest_correct_answer = datetime.datetime.now()
+        userprofile.latest_correct_answer = timezone.now()
         userprofile.score += instance.points
         userprofile.save()
 
