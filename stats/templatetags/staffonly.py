@@ -12,9 +12,9 @@ def staffonly(context, users):
         staff = False
 
     for user in users:
-        if (user.is_superuser or user.is_staff) and (request.user.is_staff or request.user.is_superuser):
+        if (user.user.is_superuser or user.user.is_staff) and (request.user.is_staff or request.user.is_superuser):
             r.append(user)
-        elif (user.is_superuser or user.is_staff) and (not request.user.is_staff and not request.user.is_superuser):
+        elif (user.user.is_superuser or user.user.is_staff) and (not request.user.is_staff and not request.user.is_superuser):
             pass
         else:
             r.append(user)
