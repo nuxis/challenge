@@ -4,7 +4,7 @@ services:
     build: .
     volumes:
       - ./prod.py:/srv/app/challenge/settings/prod.py
-      - ./derp:/srv/app/media
+      - ./media:/srv/app/media
     ports:
       - "8080:8080"
       - "8081:8081"
