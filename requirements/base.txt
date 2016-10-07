@@ -2,3 +2,4 @@ Django==1.9.6
 django-bootstrap3==7.0.1
 django-solo==1.1.2
 sqlparse==0.1.19
+uwsgi

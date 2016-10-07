@@ -1,0 +1,11 @@
+version: '2'
+services:
+  challenge:
+    build: .
+    volumes:
+      - ./prod.py:/srv/app/challenge/settings/prod.py
+      - ./derp:/srv/app/media
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    restart: always
