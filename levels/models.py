@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+import datetime
 
 class Level(models.Model):
     name = models.CharField(max_length=64)
@@ -55,6 +58,15 @@ class Score(models.Model):
     level = models.ForeignKey(Level)
     points = models.IntegerField()
     awarded = models.DateTimeField(auto_now_add=True)
+
+@receiver(post_save, sender=Score)
+def update_userprofile_score(sender, instance, signal, created, **kwargs):
+    if created:
+        user = instance.user
+        userprofile = user.userprofile
+        userprofile.latest_correct_answer = datetime.datetime.now()
+        userprofile.score += instance.points
+        userprofile.save()
 
 
 class Attempt(models.Model):

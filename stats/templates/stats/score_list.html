@@ -30,7 +30,7 @@
 		{% for score_user in object_list %}
 		<tr>
 			<td>{{score_user.username}} ({{score_user.first_name}} {{score_user.last_name}})</td>
-			<td>{{score_user.userprofile.get_score}}</td>
+			<td>{{score_user.userprofile.score}}</td>
 			{% if user.is_superuser or user.is_staff %}
 			<td>{{score_user.is_staff|yesno}}</td>
 			<td>{{score_user.is_superuser|yesno}}</td>
