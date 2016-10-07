@@ -12,7 +12,7 @@ class ScoreList(ListView):
     model = UserProfile
     template_name = 'stats/score_list.html'
 
-    ordering = ['-score', '-latest_correct_answer']
+    ordering = ['-score', 'latest_correct_answer']
 
 
 # attemps should only be visible to superusers
