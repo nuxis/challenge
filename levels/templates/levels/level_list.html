@@ -10,6 +10,7 @@
 {% for level in object_list %}
 {% if forloop.counter|divisibleby:4 %}<div class="row">{% endif %}
 {% with status=level|level_user_status:user%}
+{% if request.user.userprofile.score >= level.required_points %}
 <div class="col-md-3">
 	{% if status == "tried" %}
 		<div class="panel panel-warning">
@@ -36,6 +37,16 @@
 		</div>
 	</div>
 </div>
+{% else %}
+<div class="col-md-3">
+		<div class="panel-heading">
+				<h3 class="panel-title">{{level.name}}</h3>
+		</div>
+		<div class="panel-body panel-minheight">
+
+		</div>
+</div>
+{% endif %}
 {% if forloop.counter|divisibleby:4 %}</div>{% endif %}
 {% endwith %}
 {% endfor %}
