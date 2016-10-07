@@ -22,6 +22,9 @@ def level(request, pk):
     if level.get_user_status(user) == "completed":
         return redirect('levellist')
 
+    if user.userprofile.score < level.points_required:
+        return redirect('levellist')
+
     if request.method == "POST":
         answer = request.POST['answer']
         attempt = Attempt(user=user, level=level, answer=answer)
