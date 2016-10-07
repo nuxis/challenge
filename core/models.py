@@ -23,9 +23,11 @@ class Config(SingletonModel):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    @property
     def get_score(self):
         return Score.objects.filter(user=self.user).aggregate(Sum('points'))['points__sum']
 
+    @property
     def latest_correct_answer(self):
         latest = Score.objects.filter(user=self.user).latest('awarded')
         return latest.awarded
