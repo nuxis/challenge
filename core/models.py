@@ -26,6 +26,10 @@ class UserProfile(models.Model):
     def get_score(self):
         return Score.objects.filter(user=self.user).aggregate(Sum('points'))['points__sum']
 
+    def latest_correct_answer(self):
+        latest = Score.objects.filter(user=self.user).latest('awarded')
+        return latest.awarded
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, signal, created, **kwargs):
