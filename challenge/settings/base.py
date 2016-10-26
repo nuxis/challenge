@@ -7,6 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
 
+SECRET_KEY="CHANGEME"
 
 TIME_ZONE = 'Europe/Oslo'
 LANGUAGE_CODE = 'en'

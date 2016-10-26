@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-python3 manage.py migrate
+python manage.py migrate
 
 
 echo Starting uwsgi.
