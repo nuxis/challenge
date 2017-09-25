@@ -7,7 +7,7 @@ PIP=$(ENV)/pip
 MANAGE=$(PYTHON) manage.py
 
 env:
-	virtualenv -p `which python3` env
+	python3 -m venv env
 
 run:
 	$(MANAGE) runserver 0.0.0.0:8000
