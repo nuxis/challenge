@@ -6,12 +6,20 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from django.contrib.auth.models import User
-from levels.models import Score
+
 
 class Config(SingletonModel):
     welcometext = models.TextField(blank=True)
     eventname = models.CharField(max_length=256)
     active = models.BooleanField(default=False)
+    webhook_admins = models.CharField(
+        max_length=512,
+        help_text='Slack-compatible webhooks for admins. May contain game-sensitive information',
+        default=None,
+        null=True,
+        blank=True,
+    )
+
 
     def __unicode__(self):
         return _("Site configuration")
