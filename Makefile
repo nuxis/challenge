@@ -9,6 +9,9 @@ MANAGE=$(PYTHON) manage.py
 env:
 	python3 -m venv env
 
+celery:
+	celery -A challenge worker -l info
+
 run:
 	$(MANAGE) runserver 0.0.0.0:8000
 
