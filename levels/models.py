@@ -80,7 +80,19 @@ def updated_score(sender, instance, signal, created, **kwargs):
         if config.webhook_admins:
             web_post_json.delay(
                 config.webhook_admins,
-                {'text': '{} completed level {} for {} points'.format(instance.user, instance.level, instance.points)}
+                {
+
+                    'attachments': [{
+                        'fallback': '{} completed level {} for {} points'.format(instance.user, instance.level, instance.points),
+                        'text': 'User *{}* completed level *{}* for *{}* points. '.format(instance.user, instance.level, instance.points),
+                        'fields': [
+                            {'title': 'Current rank', 'short': True, 'value': '{}'.format("FIXME")},
+                            {'title': 'Total points', 'short': True, 'value': '{}'.format(instance.user.userprofile.score)},
+                        ],
+                        'color': 'good',
+                        "mrkdwn_in": ["text", "pretext"]
+                    }]
+                }
             )
 
 
