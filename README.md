@@ -6,7 +6,7 @@ Normally used for PsyChic Challenge at Polar Party.
 
 # Installing
 
-See https://github.com/Pr0jectX/challenge/wiki/Installing-challenge-0.1 for more information on installing challenge.
+See https://github.com/Pr0jectX/challenge/wiki/Installing-challenge for more information on installing challenge.
 
 
 # Background and history
@@ -41,7 +41,7 @@ our own PsyChic Challenge without Stian who didn't have time for it anymore.
 Some of us were already members of PsyChic, so we "stole" the name and made it
 our own.
 
-This Python/Django-application was actually written back then in 2010, but 
+This Python/Django-application was actually written back then in 2010, but
 we decided not to use it because most of the developers then didn't know
 Python. Instead we wrote yet another quick PHP, hardcoded hack.
 And then we did the same for PP20 in 2011, and PP21 in 2012.
