@@ -64,6 +64,25 @@ class Score(models.Model):
     points = models.IntegerField()
     awarded = models.DateTimeField(auto_now_add=True)
 
+@receiver(post_save, sender=Level)
+def updated_level(sender, instance, signal, created, **kwargs):
+    if created:
+        # send webhook if configured
+        # FIXME: translation of webhook payload?
+        config = Config.objects.get(pk=1)
+        if config.webhook_admins:
+            web_post_json.delay(
+                config.webhook_admins,
+                {
+
+                    'attachments': [{
+                        'fallback': 'New level created: {}'.format(instance.name),
+                        'text': 'New level created: *{}*'.format(instance.name),
+                        "mrkdwn_in": ["text", "pretext"]
+                    }]
+                }
+            )
+
 @receiver(post_save, sender=Score)
 def updated_score(sender, instance, signal, created, **kwargs):
     if created:
