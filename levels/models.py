@@ -8,11 +8,23 @@ from core.models import Config
 from core.tasks import web_post_json
 
 class Level(models.Model):
-    name = models.CharField(max_length=64)
-    description = models.CharField(max_length=128)
+    name = models.CharField(
+        max_length=64,
+        help_text='Shown in level list.'
+    )
+    description = models.CharField(
+        max_length=128,
+        help_text='Shown in level list.'
+    )
 
-    points = models.IntegerField(default=1)
-    completed = models.IntegerField(default=0)
+    points = models.IntegerField(
+        default=1,
+        help_text='How many points is this level worth?'
+    )
+    completed = models.IntegerField(
+        default=0,
+        help_text='Number of users that solved this level.'
+    )
 
     is_external = models.BooleanField(
         default=False,
@@ -20,14 +32,25 @@ class Level(models.Model):
     )
 
     question = models.TextField()
-    multianswer = models.BooleanField(default=False)
+    multianswer = models.BooleanField(
+        default=False,
+        help_text='Multiple possible answers? Split answers with "||" in the answer field.'
+        )
     answer = models.CharField(
         max_length=256,
         help_text='Answer here. If multianswer, split with "||". If external, URL here.'
     )
     sourcehint = models.CharField(max_length=256, blank=True)
-    imageurl = models.CharField(max_length=256, blank=True)
-    buttontext = models.CharField(max_length=256, blank=True)
+    imageurl = models.CharField(
+        max_length=256,
+        blank=True,
+        help_text='URL to image to be shown on the level page. Uploads must be handled outside of challenge.'
+    )
+    buttontext = models.CharField(
+        max_length=256,
+        blank=True,
+        help_text='Text for the submit button. Default is "Feeling lucky? ;-)"'
+        )
     css = models.TextField(
         blank=True,
         help_text='This field will be inserted into the level page as CSS'
@@ -37,7 +60,10 @@ class Level(models.Model):
         help_text='This field will be inserted into the level page as JavaScript'
     )
 
-    required_points = models.IntegerField(default=0)
+    required_points = models.IntegerField(
+        default=0,
+        help_text='Number of points required to access this level.'
+    )
 
     def __str__(self):
         return self.name
