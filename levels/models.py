@@ -28,7 +28,14 @@ class Level(models.Model):
     sourcehint = models.CharField(max_length=256, blank=True)
     imageurl = models.CharField(max_length=256, blank=True)
     buttontext = models.CharField(max_length=256, blank=True)
-    css = models.TextField(blank=True)
+    css = models.TextField(
+        blank=True,
+        help_text='This field will be inserted into the level page as CSS'
+    )
+    javascript = models.TextField(
+        blank=True,
+        help_text='This field will be inserted into the level page as JavaScript'
+    )
 
     required_points = models.IntegerField(default=0)
 
