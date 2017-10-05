@@ -105,7 +105,7 @@ def updated_score(sender, instance, signal, created, **kwargs):
                         'fallback': '{} completed level {} for {} points'.format(instance.user, instance.level, instance.points),
                         'text': 'User *{}* completed level *{}* for *{}* points. '.format(instance.user, instance.level, instance.points),
                         'fields': [
-                            {'title': 'Current rank', 'short': True, 'value': '{}'.format("FIXME")},
+                            {'title': 'Current rank', 'short': True, 'value': '{}'.format(instance.user.userprofile.rank)},
                             {'title': 'Total points', 'short': True, 'value': '{}'.format(instance.user.userprofile.score)},
                         ],
                         'color': 'good',

@@ -15,6 +15,7 @@
 
 	<thead>
 		<tr>
+			<th>{% trans "Rank" %}
 			<th>{% trans "User" %}</th>
 			<th>{% trans "Score" %}</th>
 			{% if user.is_superuser or user.is_staff %}
@@ -29,6 +30,7 @@
 		{% staffonly object_list as object_list%}
 		{% for score_user in object_list %}
 		<tr>
+			<td>{{score_user.rank}}</td>
 			<td>{{score_user.user.username}} ({{score_user.user.first_name}} {{score_user.user.last_name}})</td>
 			<td>{{score_user.score}}</td>
 			{% if user.is_superuser or user.is_staff %}
@@ -38,7 +40,7 @@
             <td>{{score_user.latest_correct_answer|date:'c'}}</td>
 		</tr>
 		{% endfor %}
-	</tbody>		
+	</tbody>
 
 </table>
 

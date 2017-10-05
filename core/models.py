@@ -33,6 +33,13 @@ class UserProfile(models.Model):
     score = models.IntegerField(default=0)
     latest_correct_answer = models.DateTimeField(blank=True, null=True)
 
+    @property
+    def rank(self):
+        users_sorted = UserProfile.objects.all().order_by('-score', 'latest_correct_answer')
+        for index, item in enumerate(users_sorted):
+            if item.pk == self.pk:
+                return index + 1
+
 #    @property
 #    def get_score(self):
 #        return Score.objects.filter(user=self.user).aggregate(Sum('points'))['points__sum']
