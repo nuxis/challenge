@@ -28,8 +28,21 @@ def level(request, pk):
     if request.method == "POST":
         answer = request.POST['answer']
         attempt = Attempt(user=user, level=level, answer=answer)
+# FIXME: should clean this up sometime. should be a couple of functions for reuse
+        if level.is_external:
 
-        if level.check_answer(answer):
+            if level.external_check(answer, user):
+                level.set_completed(user)
+                attempt.correct = True
+                messages.success(request, _('Correct answer. Congrats!'))
+                attempt.save()
+                return redirect('levellist')
+            else:
+                attempt.correct = False
+                attempt.save()
+                messages.error(request, _('Wrong answer! Try again :-D'))
+
+        elif level.check_answer(answer):
             level.set_completed(user)
             attempt.correct = True
             messages.success(request, _('Correct answer. Congrats!'))

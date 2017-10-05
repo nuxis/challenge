@@ -14,9 +14,17 @@ class Level(models.Model):
     points = models.IntegerField(default=1)
     completed = models.IntegerField(default=0)
 
+    is_external = models.BooleanField(
+        default=False,
+        help_text='Check answer against URL in answer field',
+    )
+
     question = models.TextField()
     multianswer = models.BooleanField(default=False)
-    answer = models.CharField(max_length=128)
+    answer = models.CharField(
+        max_length=256,
+        help_text='Answer here. If multianswer, split with "||". If external, URL here.'
+    )
     sourcehint = models.CharField(max_length=256, blank=True)
     imageurl = models.CharField(max_length=256, blank=True)
     buttontext = models.CharField(max_length=256, blank=True)
@@ -54,6 +62,22 @@ class Level(models.Model):
             return "completed"
         if attempts.count() > 0:
             return "tried"
+        else:
+            return False
+
+    def external_check(self, attempted_answer, user):
+        timeout = 10 # XXX: hardcoded timeout for external answer check
+        url = self.answer # URL is stored in level answer field
+        payload = {
+            'level_name': self.name,
+            'level_pk': self.pk,
+            'attempted_answer': attempted_answer,
+            'user_username': user.username,
+            'user_pk': user.pk,
+        }
+        response = web_post_json(url, payload, timeout)
+        if response == 200:
+            return True
         else:
             return False
 
