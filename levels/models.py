@@ -64,6 +64,10 @@ class Level(models.Model):
         default=0,
         help_text='Number of points required to access this level.'
     )
+    required_attempts = models.PositiveIntegerField(
+        default=0,
+        help_text='Users need to try at least this many times before we accept an answer'
+    )
 
     def __str__(self):
         return self.name
@@ -75,7 +79,11 @@ class Level(models.Model):
         score = Score(user=user, level=self, points=self.points)
         score.save()
 
-    def check_answer(self, answer):
+    def check_answer(self, answer, user):
+
+        if self.required_attempts and self.required_attempts > user.userprofile.get_attempts(self):
+            return False
+
         answer = answer.upper()
         level_answer = self.answer.upper()
 

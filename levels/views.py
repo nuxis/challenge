@@ -42,7 +42,7 @@ def level(request, pk):
                 attempt.save()
                 messages.error(request, _('Wrong answer! Try again :-D'))
 
-        elif level.check_answer(answer):
+        elif level.check_answer(answer, user):
             level.set_completed(user)
             attempt.correct = True
             messages.success(request, _('Correct answer. Congrats!'))
@@ -55,6 +55,7 @@ def level(request, pk):
 
     context['level'] = level
     context['form'] = AnswerForm()
+    context['attempts'] = user.userprofile.get_attempts(level)
     return render(request, "levels/levels.html", context)
 
 

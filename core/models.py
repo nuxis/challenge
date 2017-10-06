@@ -33,6 +33,9 @@ class UserProfile(models.Model):
     score = models.IntegerField(default=0)
     latest_correct_answer = models.DateTimeField(blank=True, null=True)
 
+    def get_attempts(self, level):
+        return len(self.user.attempt_set.filter(level=level))
+
     @property
     def rank(self):
         users_sorted = UserProfile.objects.all().order_by('-score', 'latest_correct_answer')
