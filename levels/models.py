@@ -124,8 +124,8 @@ class Level(models.Model):
 
 
 class Score(models.Model):
-    user = models.ForeignKey(User)
-    level = models.ForeignKey(Level)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
     points = models.IntegerField()
     awarded = models.DateTimeField(auto_now_add=True)
 
@@ -181,8 +181,8 @@ def updated_score(sender, instance, signal, created, **kwargs):
 
 
 class Attempt(models.Model):
-    user = models.ForeignKey(User)
-    level = models.ForeignKey(Level)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE)
     answer = models.TextField()
     correct = models.BooleanField(default=False)
     time = models.DateTimeField(auto_now=True)

@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
+from django.urls import path
 
 from django.contrib import admin
 admin.autodiscover()
@@ -11,16 +12,14 @@ import django.contrib.auth.views
 import core.views
 import stats.views
 
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    path('admin/', admin.site.urls),
     url(r'^$', core.views.index, name='index'),
     url(r'^done/$', levels.views.done, name='done'),
-
-    url(r'^login/$', django.contrib.auth.views.login,
-        {'template_name': 'core/login.html'}, name="login"),
-    url(r'^logout/$', django.contrib.auth.views.logout_then_login,
-        name="logout_then_login"),
+    path('login/', LoginView.as_view(template_name='core/login.html'), name='login'),
+    url(r'^logout/$', django.contrib.auth.views.logout_then_login, name="logout_then_login"),
     url(r'^register/$', core.views.register, name="register"),
     url(r'^score/$', stats.views.ScoreList.as_view(), name='score'),
     url(r'^attempts/$', stats.views.attempts, name='attempts'),

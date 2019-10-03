@@ -1,7 +1,7 @@
-Django==1.11.15
+Django
 django-bootstrap3==9.0.0
-django-solo==1.1.2
-sqlparse==0.2.3
+django-solo
+sqlparse
 uwsgi
 celery[redis]
 requests

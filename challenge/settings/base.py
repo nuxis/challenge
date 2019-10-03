@@ -30,14 +30,14 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale/"),
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'core.middleware.ClosedMiddleware',
-)
+    ]
 
 ROOT_URLCONF = 'challenge.urls'
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.staticfiles',
+    'django.contrib.messages',
     'bootstrap3',
     'solo',
     'levels',

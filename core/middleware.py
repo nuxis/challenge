@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.utils.deprecation import MiddlewareMixin
 
 from core.models import Config
 from levels.models import Level
 
+
 import re
 
-class ClosedMiddleware(object):
+class ClosedMiddleware(MiddlewareMixin):
     def process_request(self, request):
 
         if hasattr(request, 'user') and request.user.is_staff:
