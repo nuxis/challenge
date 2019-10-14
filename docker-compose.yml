@@ -1,6 +1,8 @@
 version: '3'
 
 services:
+  redis:
+    image: redis:5-buster
   db:
     image: postgres:11
   backend:
@@ -10,5 +12,26 @@ services:
       - .:/code
     depends_on:
       - db
+      - redis
     ports:
       - 80:8000
+  celery:
+    environment:
+        - DJANGO_SETTINGS_MODULE=challenge.settings.dev
+    image: challenge_backend
+    command: celery -A challenge worker -l info
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis
+  celery-beat:
+    environment:
+      - DJANGO_SETTINGS_MODULE=challenge.settings.dev
+    image: challenge_backend
+    command: celery -A challenge beat -l info
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis

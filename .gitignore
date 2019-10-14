@@ -12,3 +12,7 @@ challenge/settings/prod.py
 
 # ignore collected static files
 collected_static/
+
+
+celerybeat.pid
+celerybeat-schedule
