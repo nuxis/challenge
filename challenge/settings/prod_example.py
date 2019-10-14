@@ -13,19 +13,6 @@ ALLOWED_HOSTS = ['challenge.example.com']
 #)
 #MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'challenge',
-        'USER': 'challenge',
-        'PASSWORD': 'challenge',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    }
-}
-
-
-
 TIME_ZONE = 'Europe/Oslo'
 LANGUAGE_CODE = 'en'
 

@@ -19,6 +19,17 @@ LANGUAGES = (
 )
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
+}
+
+
 SITE_ID = 1
 
 USE_I18N = True
