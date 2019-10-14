@@ -2,6 +2,7 @@ Django
 django-bootstrap3==9.0.0
 django-solo
 sqlparse
-uwsgi
 celery[redis]
 requests
+
+psycopg2-binary
