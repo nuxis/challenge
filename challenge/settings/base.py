@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+    'crispy_forms',
     'bootstrap3',
     'solo',
     'levels',
@@ -103,3 +104,5 @@ CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,25 +1,22 @@
-{% extends "core/base.html" %}
+{% extends "core/base4.html" %}
 {% load i18n %}
-{% load bootstrap3 %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-<center>
-<h2>{% trans "Hello!" %}</h2>
-<p>{% trans "Create an user or sign in!" %}</p>
-</center>
-
-<form method='POST' action="{% url 'login' %}">
-
-{% bootstrap_form form %}
-
-{% csrf_token %}
-
-{% buttons %}
-<button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-<a role="button" href="{% url 'register' %}" class="btn btn-warning">{% trans "Register user" %}</a>
-{% endbuttons %}
-
-</form>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <h2>{% trans "Hello!" %}</h2>
+            <p>{% trans "Create an user or sign in!" %}</p>
+            <form method='POST' action="{% url 'login' %}">
+                {{ form|crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
+                <a role="button" href="{% url 'register' %}" class="btn btn-warning">{% trans "Register user" %}</a>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

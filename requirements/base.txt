@@ -5,4 +5,5 @@ sqlparse
 celery[redis]
 requests
 
+django-crispy-forms
 psycopg2-binary
