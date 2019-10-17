@@ -1,9 +1,15 @@
 body
 {
-	padding-top: 50px;
-
     color: #ebebeb;
     background-color: #2b3e50;
+}
+
+.container {
+	padding-top: 50px;
+}
+
+.navbar-custom {
+	background-color: #df691a;
 }
 
 
