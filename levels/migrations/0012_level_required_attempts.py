@@ -6,15 +6,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0011_auto_20171005_2340'),
+        ("levels", "0011_auto_20171005_2340"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='level',
-            name='required_attempts',
-            field=models.IntegerField(default=0, help_text='Users need to try at least this many times before we accept an answer'),
+            model_name="level",
+            name="required_attempts",
+            field=models.IntegerField(
+                default=0,
+                help_text="Users need to try at least this many times before we accept an answer",
+            ),
         ),
     ]

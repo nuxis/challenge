@@ -6,50 +6,66 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0010_auto_20171005_2308'),
+        ("levels", "0010_auto_20171005_2308"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='level',
-            name='buttontext',
-            field=models.CharField(blank=True, help_text='Text for the submit button. Default is "Feeling lucky? ;-)"', max_length=256),
+            model_name="level",
+            name="buttontext",
+            field=models.CharField(
+                blank=True,
+                help_text='Text for the submit button. Default is "Feeling lucky? ;-)"',
+                max_length=256,
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='completed',
-            field=models.IntegerField(default=0, help_text='Number of users that solved this level.'),
+            model_name="level",
+            name="completed",
+            field=models.IntegerField(
+                default=0, help_text="Number of users that solved this level."
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='description',
-            field=models.CharField(help_text='Shown in level list.', max_length=128),
+            model_name="level",
+            name="description",
+            field=models.CharField(help_text="Shown in level list.", max_length=128),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='imageurl',
-            field=models.CharField(blank=True, help_text='URL to image to be shown on the level page. Uploads must be handled outside of challenge.', max_length=256),
+            model_name="level",
+            name="imageurl",
+            field=models.CharField(
+                blank=True,
+                help_text="URL to image to be shown on the level page. Uploads must be handled outside of challenge.",
+                max_length=256,
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='multianswer',
-            field=models.BooleanField(default=False, help_text='Multiple possible answers? Split answers with "||" in the answer field.'),
+            model_name="level",
+            name="multianswer",
+            field=models.BooleanField(
+                default=False,
+                help_text='Multiple possible answers? Split answers with "||" in the answer field.',
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='name',
-            field=models.CharField(help_text='Shown in level list.', max_length=64),
+            model_name="level",
+            name="name",
+            field=models.CharField(help_text="Shown in level list.", max_length=64),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='points',
-            field=models.IntegerField(default=1, help_text='How many points is this level worth?'),
+            model_name="level",
+            name="points",
+            field=models.IntegerField(
+                default=1, help_text="How many points is this level worth?"
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='required_points',
-            field=models.IntegerField(default=0, help_text='Number of points required to access this level.'),
+            model_name="level",
+            name="required_points",
+            field=models.IntegerField(
+                default=0, help_text="Number of points required to access this level."
+            ),
         ),
     ]

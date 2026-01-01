@@ -6,15 +6,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0003_auto_20161007_1830'),
+        ("core", "0003_auto_20161007_1830"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='config',
-            name='webhook_admins',
-            field=models.CharField(default=None, help_text='Slack-compatible webhooks for admins. May contain game-sensitive information', max_length=512, null=True),
+            model_name="config",
+            name="webhook_admins",
+            field=models.CharField(
+                default=None,
+                help_text="Slack-compatible webhooks for admins. May contain game-sensitive information",
+                max_length=512,
+                null=True,
+            ),
         ),
     ]

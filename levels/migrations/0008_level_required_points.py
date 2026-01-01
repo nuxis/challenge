@@ -6,15 +6,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0007_auto_20160522_1957'),
+        ("levels", "0007_auto_20160522_1957"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='level',
-            name='required_points',
+            model_name="level",
+            name="required_points",
             field=models.IntegerField(default=0),
         ),
     ]

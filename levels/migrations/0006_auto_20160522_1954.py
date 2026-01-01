@@ -6,15 +6,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0005_auto_20160516_1924'),
+        ("levels", "0005_auto_20160516_1924"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='level',
-            name='completed',
+            model_name="level",
+            name="completed",
             field=models.IntegerField(default=0),
         ),
     ]

@@ -6,20 +6,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0009_auto_20171005_1919'),
+        ("levels", "0009_auto_20171005_1919"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='level',
-            name='javascript',
-            field=models.TextField(blank=True, help_text='This field will be inserted into the level page as JavaScript'),
+            model_name="level",
+            name="javascript",
+            field=models.TextField(
+                blank=True,
+                help_text="This field will be inserted into the level page as JavaScript",
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='css',
-            field=models.TextField(blank=True, help_text='This field will be inserted into the level page as CSS'),
+            model_name="level",
+            name="css",
+            field=models.TextField(
+                blank=True,
+                help_text="This field will be inserted into the level page as CSS",
+            ),
         ),
     ]

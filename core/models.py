@@ -1,7 +1,6 @@
 from django.db import models
 from solo.models import SingletonModel
 from django.utils.translation import ugettext as _
-from django.db.models import Sum
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -14,18 +13,17 @@ class Config(SingletonModel):
     active = models.BooleanField(default=False)
     webhook_admins = models.CharField(
         max_length=512,
-        help_text='Slack-compatible webhooks for admins. May contain game-sensitive information',
+        help_text="Slack-compatible webhooks for admins. May contain game-sensitive information",
         default=None,
         null=True,
         blank=True,
     )
 
-
     def __unicode__(self):
         return _("Site configuration")
 
     class Meta:
-         verbose_name = _("Site configuration")
+        verbose_name = _("Site configuration")
 
 
 class UserProfile(models.Model):
@@ -38,10 +36,13 @@ class UserProfile(models.Model):
 
     @property
     def rank(self):
-        users_sorted = UserProfile.objects.all().order_by('-score', 'latest_correct_answer')
+        users_sorted = UserProfile.objects.all().order_by(
+            "-score", "latest_correct_answer"
+        )
         for index, item in enumerate(users_sorted):
             if item.pk == self.pk:
                 return index + 1
+
 
 #    @property
 #    def get_score(self):

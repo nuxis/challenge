@@ -9,15 +9,15 @@ from levels.models import Level
 
 import re
 
+
 class ClosedMiddleware(MiddlewareMixin):
     def process_request(self, request):
-
-        if hasattr(request, 'user') and request.user.is_staff:
+        if hasattr(request, "user") and request.user.is_staff:
             return None
 
-        if re.match('^/admin/', request.path_info):
+        if re.match("^/admin/", request.path_info):
             return None
-        if re.match('^/__debug__/', request.path_info) and settings.DEBUG:
+        if re.match("^/__debug__/", request.path_info) and settings.DEBUG:
             return None
 
         if Config.objects.all().count() != 1:
@@ -35,9 +35,9 @@ class ClosedMiddleware(MiddlewareMixin):
     def closed(self, request):
         try:
             config = Config.objects.get(pk=1)
-        except:
-            config = {'welcometext': _('This site is not configured yet.')}
+        except Config.DoesNotExist:
+            config = {"welcometext": _("This site is not configured yet.")}
 
         c = {}
-        c['config'] = config
-        return render(request, 'core/closed.html', c)
+        c["config"] = config
+        return render(request, "core/closed.html", c)

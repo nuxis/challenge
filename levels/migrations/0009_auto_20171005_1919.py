@@ -6,20 +6,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0008_level_required_points'),
+        ("levels", "0008_level_required_points"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='level',
-            name='is_external',
-            field=models.BooleanField(default=False, help_text='Check answer against URL in answer field'),
+            model_name="level",
+            name="is_external",
+            field=models.BooleanField(
+                default=False, help_text="Check answer against URL in answer field"
+            ),
         ),
         migrations.AlterField(
-            model_name='level',
-            name='answer',
-            field=models.CharField(help_text='Answer here. If multianswer, split with "||". If external, URL here.', max_length=256),
+            model_name="level",
+            name="answer",
+            field=models.CharField(
+                help_text='Answer here. If multianswer, split with "||". If external, URL here.',
+                max_length=256,
+            ),
         ),
     ]

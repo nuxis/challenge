@@ -6,16 +6,15 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0001_initial'),
+        ("levels", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='level',
-            name='description',
-            field=models.CharField(default='short description here', max_length=128),
+            model_name="level",
+            name="description",
+            field=models.CharField(default="short description here", max_length=128),
             preserve_default=False,
         ),
     ]

@@ -6,20 +6,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0002_userprofile'),
+        ("core", "0002_userprofile"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='userprofile',
-            name='latest_correct_answer',
+            model_name="userprofile",
+            name="latest_correct_answer",
             field=models.DateTimeField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='userprofile',
-            name='score',
+            model_name="userprofile",
+            name="score",
             field=models.IntegerField(default=0),
         ),
     ]

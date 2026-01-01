@@ -8,7 +8,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,48 +16,83 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Attempt',
+            name="Attempt",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('answer', models.TextField()),
-                ('correct', models.BooleanField(default=False)),
-                ('time', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("answer", models.TextField()),
+                ("correct", models.BooleanField(default=False)),
+                ("time", models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Level',
+            name="Level",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('question', models.TextField()),
-                ('multianswer', models.BooleanField(default=False)),
-                ('answer', models.CharField(max_length=128)),
-                ('sourcehint', models.CharField(blank=True, max_length=256)),
-                ('imageurl', models.CharField(blank=True, max_length=256)),
-                ('buttontext', models.CharField(blank=True, max_length=256)),
-                ('css', models.TextField(blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                ("question", models.TextField()),
+                ("multianswer", models.BooleanField(default=False)),
+                ("answer", models.CharField(max_length=128)),
+                ("sourcehint", models.CharField(blank=True, max_length=256)),
+                ("imageurl", models.CharField(blank=True, max_length=256)),
+                ("buttontext", models.CharField(blank=True, max_length=256)),
+                ("css", models.TextField(blank=True)),
             ],
             options={
-                'managed': True,
+                "managed": True,
             },
         ),
         migrations.CreateModel(
-            name='Score',
+            name="Score",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('max_level', models.IntegerField()),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('user', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("max_level", models.IntegerField()),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.OneToOneField(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='attempt',
-            name='level',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='levels.Level'),
+            model_name="attempt",
+            name="level",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="levels.Level"
+            ),
         ),
         migrations.AddField(
-            model_name='attempt',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="attempt",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

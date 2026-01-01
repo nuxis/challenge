@@ -8,20 +8,23 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0004_auto_20160516_1854'),
+        ("levels", "0004_auto_20160516_1854"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='score',
-            name='level',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='levels.Level'),
+            model_name="score",
+            name="level",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="levels.Level"
+            ),
         ),
         migrations.AlterField(
-            model_name='score',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="score",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

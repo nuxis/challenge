@@ -9,51 +9,59 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('levels', '0003_level_points'),
+        ("levels", "0003_level_points"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='level',
+            name="level",
             options={},
         ),
         migrations.RemoveField(
-            model_name='score',
-            name='max_level',
+            model_name="score",
+            name="max_level",
         ),
         migrations.RemoveField(
-            model_name='score',
-            name='updated',
+            model_name="score",
+            name="updated",
         ),
         migrations.AddField(
-            model_name='level',
-            name='completed',
+            model_name="level",
+            name="completed",
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='score',
-            name='awarded',
-            field=models.DateTimeField(auto_now_add=True, default=datetime.datetime(2016, 5, 16, 18, 54, 25, 527403)),
+            model_name="score",
+            name="awarded",
+            field=models.DateTimeField(
+                auto_now_add=True,
+                default=datetime.datetime(2016, 5, 16, 18, 54, 25, 527403),
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='score',
-            name='level',
-            field=models.OneToOneField(default=1, on_delete=django.db.models.deletion.CASCADE, to='levels.Level'),
+            model_name="score",
+            name="level",
+            field=models.OneToOneField(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="levels.Level",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='score',
-            name='points',
+            model_name="score",
+            name="points",
             field=models.IntegerField(default=10),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='score',
-            name='user',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="score",
+            name="user",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]
