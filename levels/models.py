@@ -24,7 +24,10 @@ class Level(models.Model):
         help_text="Check answer against URL in answer field",
     )
 
-    question = models.TextField()
+    question = models.TextField(
+        blank=True,
+        help_text='Question-text. Can be empty, but then you should have some other way (image?) for users to understand the question.'
+    )
     multianswer = models.BooleanField(
         default=False,
         help_text='Multiple possible answers? Split answers with "||" in the answer field.',
