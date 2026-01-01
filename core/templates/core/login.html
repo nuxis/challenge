@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
@@ -15,10 +15,11 @@
 
 {% csrf_token %}
 
-{% buttons %}
-<button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-<a role="button" href="{% url 'register' %}" class="btn btn-warning">{% trans "Register user" %}</a>
-{% endbuttons %}
+{% trans "Log in" as login_content %}
+{% bootstrap_button button_type="submit" content=login_content %}
+{% url 'register' as register_link %}
+{% trans "Register user" as register_content %}
+{% bootstrap_button button_type="link" content=register_content href=register_link button_class="btn-warning" %}
 
 </form>
 

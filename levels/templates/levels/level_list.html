@@ -1,6 +1,6 @@
 {% extends "core/base.html" %}
 {% load i18n %}
-{% load bootstrap5 %}
+{% load django_bootstrap5 %}
 {% load levelstatus %}
 
 {% block content %}
@@ -32,7 +32,9 @@
 			{% endblocktrans %}
 
 			{% if status != "completed" %}
-			<a role="button" href="{% url 'level' level.pk %}" class="btn btn-primary">Do it!</a>
+			{% trans "Do it!" as doit_content %}
+			{% url 'level' level.pk as doit_link %}
+			{% bootstrap_button button_type="link" content=doit_content href=doit_link %}
 			{% endif %}
 		</div>
 	</div>
