@@ -1,5 +1,5 @@
 Django
-django-bootstrap3==9.0.0
+django-bootstrap5
 django-solo
 sqlparse
 celery[redis]

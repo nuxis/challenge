@@ -1,13 +1,13 @@
-{% extends 'bootstrap3/bootstrap3.html' %}
-{% load bootstrap3 %}
+{% extends 'bootstrap5/bootstrap5.html' %}
+{% load bootstrap5 %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 
-{% block bootstrap3_title %}
+{% block bootstrap5_title %}
 challenge
 {% endblock %}
 
-{% block bootstrap3_extra_head %}
+{% block bootstrap5_extra_head %}
 <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
 
 {% block style %}
@@ -21,7 +21,7 @@ challenge
 {% endblock %}
 
 
-{% block bootstrap3_content %}
+{% block bootstrap5_content %}
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">

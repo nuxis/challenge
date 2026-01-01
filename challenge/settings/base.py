@@ -60,7 +60,7 @@ INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.staticfiles",
     "django.contrib.messages",
-    "bootstrap3",
+    "django_bootstrap5",
     "solo",
     "levels",
     "core",
@@ -92,10 +92,6 @@ STATIC_URL = "/static/"
 LOGIN_URL = "/login/"
 LOGOUT_URL = "/logout/"
 LOGIN_REDIRECT_URL = "/"
-
-BOOTSTRAP3 = {
-    "css_url": "https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css",
-}
 
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
