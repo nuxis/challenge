@@ -1,2 +1,6 @@
 -r base.txt
 django-debug-toolbar
+
+
+ruff
+pre-commit
