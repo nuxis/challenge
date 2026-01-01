@@ -6,3 +6,4 @@ celery[redis]
 requests
 
 psycopg2-binary
+environs[django]

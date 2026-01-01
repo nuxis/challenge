@@ -3,6 +3,11 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.utils.translation import gettext_lazy as _
+from environs import Env
+
+env = Env()
+env.read_env()
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -19,17 +24,7 @@ LANGUAGES = (
     ("en", _("English")),
 )
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "HOST": "db",
-        "PORT": 5432,
-    }
-}
-
+DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 SITE_ID = 1
 

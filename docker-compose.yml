@@ -1,10 +1,14 @@
-version: '3'
-
 services:
   redis:
-    image: redis:5-buster
+    image: redis:7-alpine
   db:
-    image: postgres:11
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: challenge
+      POSTGRES_USER: challenge
+      POSTGRES_PASSWORD: challenge
   backend:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -14,24 +18,30 @@ services:
       - db
       - redis
     ports:
-      - 80:8000
-  celery:
+      - 8000:8000
     environment:
-        - DJANGO_SETTINGS_MODULE=challenge.settings.dev
-    image: challenge_backend
-    command: celery -A challenge worker -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-      - redis
-  celery-beat:
-    environment:
-      - DJANGO_SETTINGS_MODULE=challenge.settings.dev
-    image: challenge_backend
-    command: celery -A challenge beat -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-      - redis
+      DATABASE_URL: "postgres://challenge:challenge@db:5432/challenge"
+#  celery:
+#    environment:
+#        - DJANGO_SETTINGS_MODULE=challenge.settings.dev
+#    build: .
+#    command: celery -A challenge worker -l info
+#    volumes:
+#      - .:/code
+#    depends_on:
+#      - db
+#      - redis
+#  celery-beat:
+#    environment:
+#      - DJANGO_SETTINGS_MODULE=challenge.settings.dev
+#    build: .
+#    command: celery -A challenge beat -l info
+#    volumes:
+#      - .:/code
+#    depends_on:
+#      - db
+#      - redis
+
+
+volumes:
+  postgres_data:
