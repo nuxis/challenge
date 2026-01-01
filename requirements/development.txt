@@ -2,5 +2,6 @@
 django-debug-toolbar
 
 
+pyclean
 ruff
 pre-commit

@@ -1,6 +1,9 @@
 # Makefile based on https://github.com/nuxis/p0sX-server/blob/master/Makefile
 # originally by haavardlian and kradalby under MIT license
 
+
+.PHONY: env celery run clean freeze dev prod migrate collect-static lint formatter bandit
+
 ENV=./env/bin
 PYTHON=$(ENV)/python3
 PIP=$(ENV)/pip
@@ -17,8 +20,6 @@ run:
 
 clean:
 	pyclean .
-	find . -name "*.pyc" -exec rm -rf {} \;
-	rm -rf *.egg-info
 
 freeze:
 	mkdir -p requirements
@@ -33,5 +34,14 @@ prod:
 migrate:
 	$(MANAGE) migrate
 
-collect_static:
+collect-static:
 	$(MANAGE) collectstatic --noinput --clear --link
+
+lint:
+	ruff check .
+
+formatter:
+	ruff format .
+
+bandit:
+	bandit -x ./env/ -r .
