@@ -1,6 +1,6 @@
-Django
-django-bootstrap5
-django-solo
+Django==6.0
+django-bootstrap5==25.3
+django-solo==2.5.1
 sqlparse
 celery[redis]
 requests
