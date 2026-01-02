@@ -2,63 +2,55 @@
 {% load django_bootstrap5 %}
 {% load i18n %}
 {% load static %}
-
-{% block bootstrap5_title %}
-challenge
-{% endblock %}
-
+{% block bootstrap5_title %}challenge{% endblock %}
 {% block bootstrap5_extra_head %}
-<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
-
-{% block style %}
-{# this block is for level specific css #}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+    {% block style %}{# this block is for level specific css #}{% endblock %}
+    {% block extrahead %}
+        {# this block is for template specific head, like meta refresh or some other hacks#}
+    {% endblock %}
 {% endblock %}
-
-{% block extrahead%}
-{# this block is for template specific head, like meta refresh or some other hacks#}
-{% endblock %}
-
-{% endblock %}
-
-
 {% block bootstrap5_content %}
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			{% if user.is_authenticated %}
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			{% endif %}
-			<a class="navbar-brand" href="{% url 'index' %}">challenge</a>
-		</div>
-		{% if user.is_authenticated %}
-		<div id="navbar" class="navbar-collapse collapse">
-
-			<ul class="nav navbar-nav navbar-right">
-				<li><a>{{user.username}} <span class="label label-success label-pill">{{user.userprofile.get_score}}</span></a></li>
-				{% if user.is_superuser %}
-				<li><a href="{% url 'score' %}">{% trans "Score" %}</a></li>
-				<li><a href="{% url 'attempts' %}">{% trans "Attempts" %}</a></li>
-				<li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
-				{% endif %}
-				<li><a href="{% url 'logout_then_login' %}">{% trans "Log out" %}</a></li>
-			</ul>
-
-		</div><!--/.nav-collapse -->
-		{% endif %}
-	</div>
-</nav>
-
-
-<div class="container" id="content">
-{% bootstrap_messages %}
-
-{% block content %}
-{% endblock %}
-
-{% endblock %}
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">challenge</a>
+            {% if user.is_authenticated %}
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbar"
+                        aria-controls="navbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav ms-auto">
+                        <li>
+                            <a class="nav-link">{{ user.username }} <span class="badge bg-success rounded-pill">{{ user.userprofile.score }}</span></a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li>
+                                <a class="nav-link" href="{% url 'score' %}">{% trans "Score" %}</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'attempts' %}">{% trans "Attempts" %}</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a class="nav-link" href="{% url 'logout_then_login' %}">{% trans "Log out" %}</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.navbar-collapse -->
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container pt-5 mt-4" id="content">
+        {% bootstrap_messages %}
+        {% block content %}{% endblock %}
+    {% endblock %}
 </div>
