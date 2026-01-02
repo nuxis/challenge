@@ -3,9 +3,14 @@ settings_local.py
 .*.swp
 static/
 challenge.sqlite3
+db.sqlite3
+
 
 # ignore virtualenv
 env/
+
+# and environment variables
+.env
 
 # ignore production settings if they get in here
 challenge/settings/prod.py
