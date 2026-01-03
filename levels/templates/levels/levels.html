@@ -19,10 +19,10 @@
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% if level.buttontext %}
-                    {% bootstrap_button button_tpye="submit" content=level.buttontext %}
+                    {% bootstrap_button button_type="submit" content=level.buttontext %}
                 {% else %}
                     {% trans "Feeling lucky? ;-)" as lucky_content %}
-                    {% bootstrap_button button_tpye="submit" content=lucky_content %}
+                    {% bootstrap_button button_type="submit" content=lucky_content %}
                 {% endif %}
             </form>
         </div>
