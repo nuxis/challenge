@@ -26,7 +26,7 @@ class Level(models.Model):
 
     question = models.TextField(
         blank=True,
-        help_text='Question-text. Can be empty, but then you should have some other way (image?) for users to understand the question.'
+        help_text="Question-text. Can be empty, but then you should have some other way (image?) for users to understand the question.",
     )
     multianswer = models.BooleanField(
         default=False,
@@ -130,7 +130,7 @@ def updated_level(sender, instance, signal, created, **kwargs):
     if created:
         # send webhook if configured
         # FIXME: translation of webhook payload?
-        config = Config.objects.get(pk=1)
+        config = Config.objects.get()
         if config.webhook_admins:
             web_post_json.delay(
                 config.webhook_admins,
@@ -158,7 +158,7 @@ def updated_score(sender, instance, signal, created, **kwargs):
 
         # send webhook if configured
         # FIXME: translation of webhook payload?
-        config = Config.objects.get(pk=1)
+        config = Config.objects.get()
         if config.webhook_admins:
             web_post_json.delay(
                 config.webhook_admins,

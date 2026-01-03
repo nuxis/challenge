@@ -23,7 +23,7 @@ class ClosedMiddleware(MiddlewareMixin):
         if Config.objects.all().count() != 1:
             return self.closed(request)
 
-        config = Config.objects.get(pk=1)
+        config = Config.objects.get()
         if not config.active:
             return self.closed(request)
 
@@ -34,7 +34,7 @@ class ClosedMiddleware(MiddlewareMixin):
 
     def closed(self, request):
         try:
-            config = Config.objects.get(pk=1)
+            config = Config.objects.get()
         except Config.DoesNotExist:
             config = {"welcometext": _("This site is not configured yet.")}
 

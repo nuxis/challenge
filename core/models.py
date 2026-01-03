@@ -19,7 +19,7 @@ class Config(SingletonModel):
         blank=True,
     )
 
-    def __unicode__(self):
+    def __str__(self):
         return _("Site configuration")
 
     class Meta:

@@ -31,7 +31,6 @@ SITE_ID = 1
 USE_I18N = True
 
 MEDIA_URL = "/media/"
-ADMIN_MEDIA_PREFIX = "/amedia/"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale/"),)
 
