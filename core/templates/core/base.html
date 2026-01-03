@@ -41,7 +41,13 @@
                             </li>
                         {% endif %}
                         <li>
-                            <a class="nav-link" href="{% url 'logout_then_login' %}">{% trans "Log out" %}</a>
+                            <form method="post" action="{% url 'logout_then_login' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        class="btn btn-link nav-link text-decoration-none p-0 m-0 border-0 bg-transparent">
+                                    {% trans "Log out" %}
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
