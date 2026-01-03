@@ -1,7 +1,7 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.contrib.auth.views import LoginView
 from django.contrib import admin
-import django.views
+from django.conf import settings
 import levels.views
 import django.contrib.auth.views
 import core.views
@@ -25,3 +25,10 @@ urlpatterns = [
     path("levels/", levels.views.LevelList.as_view(), name="levellist"),
     re_path(r"^levels/(?P<pk>\d*)/$", levels.views.level, name="level"),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ]

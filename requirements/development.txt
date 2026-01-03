@@ -1,6 +1,8 @@
 -r base.txt
 django-debug-toolbar
 
+django-extensions
+ipython
 
 pyclean
 ruff

@@ -12,4 +12,17 @@ MIDDLEWARE += [  # noqa: F405
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
-INSTALLED_APPS += ("debug_toolbar",)  # noqa: F405
+INSTALLED_APPS += (  # noqa: F405
+    "django_extensions",
+    "debug_toolbar",
+)
+
+
+def show_debug_toolbar(request):
+    """Show debug toolbar for all requests in development"""
+    return DEBUG
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": "challenge.settings.dev.show_debug_toolbar",
+}
