@@ -1,52 +1,38 @@
 {% extends "core/base.html" %}
 {% load i18n %}
 {% load django_bootstrap5 %}
-
 {% block style %}
-{% if level.css %}
-<style>{{level.css}}</style>
-{% endif %}
+    {% if level.css %}<style>{{level.css}}</style>{% endif %}
 {% endblock %}
-
 {% block content %}
-
-<center>
-
-<h2>{{level.name}}</h2>
-
-
-<p>{% autoescape off %}{{level.question}}{% endautoescape %}</p>
-
-{% if level.sourcehint %}
-<!-- {{level.sourcehint}}  -->
-{% endif %}
-
-{% if level.imageurl %}
-<img src="{{level.imageurl}}" />
-{% endif %}
-
-<div class="well">
-
-<form action="{% url 'level' level.pk %}" method="POST">
-{% bootstrap_form form %}
-
-{% if level.buttontext %}
-{% bootstrap_button button_tpye="submit" content=level.buttontext %}
-{% else %}
-{% trans "Feeling lucky? ;-)" as lucky_content %}
-{% bootstrap_button button_tpye="submit" content=lucky_content %}
-{% endif %}
-</form>
-
-</div>
-
-</center>
-<script type="text/javascript" language="JavaScript">
+    <center>
+        <h2>{{ level.name }}</h2>
+        <p>
+            {% autoescape off %}
+                {{ level.question }}
+            {% endautoescape %}
+        </p>
+        {% if level.sourcehint %}<!-- {{level.sourcehint}}  -->{% endif %}
+        {% if level.imageurl %}<img src="{{ level.imageurl }}" />{% endif %}
+        <div class="well">
+            <form action="{% url 'level' level.pk %}" method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% if level.buttontext %}
+                    {% bootstrap_button button_tpye="submit" content=level.buttontext %}
+                {% else %}
+                    {% trans "Feeling lucky? ;-)" as lucky_content %}
+                    {% bootstrap_button button_tpye="submit" content=lucky_content %}
+                {% endif %}
+            </form>
+        </div>
+    </center>
+    <script type="text/javascript" language="JavaScript">
     var attempts = {{attempts}};
     {# The first element in the first form will always be the correct input #}
     document.forms[0].elements[0].focus();
     {% if level.javascript %}
     {{level.javascript|safe}}
     {% endif %}
-</script>
+    </script>
 {% endblock %}
