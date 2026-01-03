@@ -1,4 +1,4 @@
-from django.urls import path, re_path, include
+from django.urls import path, include
 from django.contrib.auth.views import LoginView
 from django.contrib import admin
 from django.conf import settings
@@ -21,9 +21,9 @@ urlpatterns = [
     path("register/", core.views.register, name="register"),
     path("score/", stats.views.ScoreList.as_view(), name="score"),
     path("attempts/", stats.views.attempts, name="attempts"),
-    re_path(r"^attempts/(?P<getnum>\d*)/$", stats.views.attempts),
+    path("attempts/<int:getnum>/", stats.views.attempts, name="attempts_with_limit"),
     path("levels/", levels.views.LevelList.as_view(), name="levellist"),
-    re_path(r"^levels/(?P<pk>\d*)/$", levels.views.level, name="level"),
+    path("levels/<int:pk>/", levels.views.level, name="level"),
 ]
 
 if settings.DEBUG:
