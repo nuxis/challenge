@@ -44,7 +44,7 @@
                             <form method="post" action="{% url 'logout_then_login' %}" class="d-inline">
                                 {% csrf_token %}
                                 <button type="submit"
-                                        class="btn btn-link nav-link text-decoration-none p-0 m-0 border-0 bg-transparent">
+                                        class="btn btn-link nav-link text-decoration-none border-0 bg-transparent">
                                     {% trans "Log out" %}
                                 </button>
                             </form>
