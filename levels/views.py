@@ -64,7 +64,7 @@ def done(request):
 
     try:
         score = Score.objects.get(user=request.user)
-    except Score.DoesNotExists:
+    except Score.DoesNotExist:
         return HttpResponseRedirect("/")
 
     end_level = Level.objects.latest("pk")
