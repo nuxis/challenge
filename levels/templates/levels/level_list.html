@@ -2,65 +2,70 @@
 {% load i18n %}
 {% load django_bootstrap5 %}
 {% load levelstatus %}
-
 {% block content %}
-
-{% if object_list %}
-
-{% for level in object_list %}
-{% if forloop.counter|divisibleby:4 %}<div class="row">{% endif %}
-{% with status=level|level_user_status:user%}
-{% if request.user.userprofile.score >= level.required_points %}
-<div class="col-md-3">
-	{% if status == "tried" %}
-		<div class="panel panel-warning">
-	{% elif status == "completed" %}
-		<div class="panel panel-success">
-	{% else %}
-		<div class="panel panel-info">
-	{% endif %}
-		<div class="panel-heading">
-			<h3 class="panel-title">{{level.name}}</h3>
-		</div>
-		<div class="panel-body panel-minheight">
-			{% if level.description %}<p>{{level.description}}</p>{% endif %}
-
-			{% blocktrans count count=level.completed %}
-			<p><small>Completed by {{count}} user.</small></p>
-			{% plural %}
-			<p><small>Completed by {{count}} users.</small></p>
-			{% endblocktrans %}
-
-			{% if status != "completed" %}
-			{% trans "Do it!" as doit_content %}
-			{% url 'level' level.pk as doit_link %}
-			{% bootstrap_button button_type="link" content=doit_content href=doit_link %}
-			{% endif %}
-		</div>
-	</div>
-</div>
-{% else %}
-<div class="col-md-3">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<h3 class="panel-title">{{level.name}}</h3>
-			</div>
-			<div class="panel-body panel-minheight">
-				{% blocktrans count count=level.completed %}
+    {% if object_list %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+            {% for level in object_list %}
+                {% with status=level|level_user_status:user %}
+                    {% if request.user.userprofile.score >= level.required_points %}
+                        <div class="col h-100">
+                            {% if status == "tried" %}
+                                <div class="card border-warning text-bg-warning h-100">
+                                {% elif status == "completed" %}
+                                    <div class="card border-success text-bg-success h-100">
+                                    {% else %}
+                                        <div class="card border-info text-bg-info h-100">
+                                        {% endif %}
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                {{ level.name }}
+                                                {% if level.show_points %}
+                                                    {# FIXME: level.show_points is not implemented yet #}
+                                                    <span class="float-end badge bg-secondary rounded-pill"><small>{{ level.points }} {% trans "pts" %}</small></span>
+                                                {% endif %}
+                                            </h5>
+                                        </div>
+                                        <div class="card-body">
+                                            {% if level.description %}<p>{{ level.description }}</p>{% endif %}
+                                            {% blocktrans count count=level.completed %}
+                              <p><small>Completed by {{count}} user.</small></p>
+                              {% plural %}
+                              <p><small>Completed by {{count}} users.</small></p>
+                            {% endblocktrans %}
+                                            {% if status != "completed" %}
+                                                {% trans "Do it!" as doit_content %}
+                                                {% url 'level' level.pk as doit_link %}
+                                                {% bootstrap_button button_type="link" content=doit_content href=doit_link %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col h-100">
+                                    <div class="card border-danger text-bg-danger h-100">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">
+                                                {{ level.name }}
+                                                {% if level.show_points %}
+                                                    {# FIXME: level.show_points is not implemented yet #}
+                                                    <span class="float-end badge bg-secondary rounded-pill"><small>{{ level.points }} {% trans "pts" %}</small></span>
+                                                {% endif %}
+                                            </h5>
+                                        </div>
+                                        <div class="card-body">
+                                            {% blocktrans count count=level.completed %}
 				<p><small>Completed by {{count}} user.</small></p>
 				{% plural %}
 				<p><small>Completed by {{count}} users.</small></p>
 				{% endblocktrans %}
-			</div>
-		</div>
-</div>
-{% endif %}
-{% if forloop.counter|divisibleby:4 %}</div>{% endif %}
-{% endwith %}
-{% endfor %}
-
-{% else %}
-	<div class="alert alert-danger" role="alert">{% trans "No levels defined." %}</div>
-{% endif%}
-
-{% endblock %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">{% trans "No levels defined." %}</div>
+            {% endif %}
+        {% endblock %}
