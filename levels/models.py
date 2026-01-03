@@ -94,12 +94,26 @@ class Level(models.Model):
         # XXX: this could need optimizing later. is called from a templatetag, and runs a query per level or more...
 
         attempts = self.attempt_set.filter(user=user)
-        if attempts.filter(correct=True):
+        correct_attempt = attempts.filter(correct=True)
+
+        if user.userprofile.score < self.required_points:
+            return "unavailable"
+        elif correct_attempt.exists():
             return "completed"
-        if attempts.count() > 0:
-            return "tried"
+        elif attempts.exists():
+            return "attempted"
         else:
-            return False
+            return "available"
+
+    LEVEL_COLORS = {
+        "completed": "text-bg-success",
+        "attempted": "text-bg-warning",
+        "unavailable": "text-bg-danger",
+        "available": "text-bg-info",
+    }
+
+    def level_color(self, user):
+        return self.LEVEL_COLORS.get(self.get_user_status(user), "text-bg-info")
 
     def external_check(self, attempted_answer, user):
         timeout = 10  # XXX: hardcoded timeout for external answer check
