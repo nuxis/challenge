@@ -1,6 +1,12 @@
 services:
+
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+    restart: unless-stopped
+
   db:
     image: postgres:15-alpine
     volumes:
@@ -45,3 +51,4 @@ services:
 
 volumes:
   postgres_data:
+  redis_data:
