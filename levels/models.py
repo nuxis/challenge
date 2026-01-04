@@ -15,6 +15,10 @@ class Level(models.Model):
     points = models.IntegerField(
         default=1, help_text="How many points is this level worth?"
     )
+    show_points = models.BooleanField(
+        default=False,
+        help_text="If enabled, the amount of points this level is worth will be shown on the level list",
+    )
     completed = models.IntegerField(
         default=0, help_text="Number of users that solved this level."
     )
