@@ -23,5 +23,7 @@ def attempts(request, getnum=None):
         getnum = 25
     context = {}
     context["getnum"] = getnum
-    context["attempts"] = Attempt.objects.order_by("-pk")[:getnum]
+    context["attempts"] = Attempt.objects.select_related("user", "level").order_by(
+        "-pk"
+    )[:getnum]
     return render(request, "stats/attempts.html", context)
