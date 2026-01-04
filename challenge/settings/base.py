@@ -9,11 +9,14 @@ env = Env()
 env.read_env()
 
 
+SECRET_KEY = env.str("SECRET_KEY")
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
+DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-DEBUG = False
-
+DEBUG = False  # Get overriden by dev settings
 
 TIME_ZONE = "Europe/Oslo"
 LANGUAGE_CODE = "en"
@@ -23,8 +26,6 @@ LANGUAGES = (
     ("nb", _("Norwegian bokmål")),
     ("en", _("English")),
 )
-
-DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
 
 SITE_ID = 1
 

@@ -12,21 +12,30 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_DB: challenge
-      POSTGRES_USER: challenge
-      POSTGRES_PASSWORD: challenge
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+    restart: unless-stopped
+
   backend:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     ports:
-      - 8000:8000
+      - ${BACKEND_PORT:-8000}:8000
     environment:
-      DATABASE_URL: "postgres://challenge:challenge@db:5432/challenge"
+      DATABASE_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
+      SECRET_KEY: "${SECRET_KEY}"
+      DJANGO_ENV: "${DJANGO_ENV}"
+
 #  celery:
 #    environment:
 #        - DJANGO_SETTINGS_MODULE=challenge.settings.dev
