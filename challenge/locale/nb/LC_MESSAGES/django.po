@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-11 19:22+0200\n"
+"POT-Creation-Date: 2026-01-04 02:11+0100\n"
 "PO-Revision-Date: 2014-10-11 19:19+0200\n"
 "Last-Translator: Mathias Bøhn Grytemark <mathias@grytemark.no>\n"
 "Language-Team: pr0jectx\n"
@@ -17,27 +17,57 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: challenge/settings.py:26
+#: challenge/settings/base.py:23
 msgid "Norwegian bokmål"
 msgstr "Norsk bokmål"
 
-#: challenge/settings.py:27
+#: challenge/settings/base.py:24
 msgid "English"
 msgstr "Engelsk"
 
-#: levels/views.py:58 levels/views.py:67
-msgid "Wrong answer! Try again :-D"
-msgstr "Feil svar! Prøv på nytt :-D"
+#: core/forms.py:7
+msgid "Firstname"
+msgstr ""
 
-#: templates/404.html:14
+#: core/forms.py:8
+msgid "Lastname"
+msgstr ""
+
+#: core/forms.py:9
+#, fuzzy
+#| msgid "User"
+msgid "Username"
+msgstr "Bruker"
+
+#: core/forms.py:10
+msgid "Email"
+msgstr ""
+
+#: core/forms.py:11
+msgid "Password"
+msgstr ""
+
+#: core/forms.py:12
+msgid "Repeat passord"
+msgstr ""
+
+#: core/middleware.py:39
+msgid "This site is not configured yet."
+msgstr ""
+
+#: core/models.py:23 core/models.py:26
+msgid "Site configuration"
+msgstr ""
+
+#: core/templates/404.html:14
 msgid "We couldn't find what you're looking for..."
 msgstr "Vi klarte ikke å finne det du leter etter..."
 
-#: templates/404.html:16
+#: core/templates/404.html:16
 msgid "This might be an error. Or you may have done something weird."
 msgstr "Det kan jo være en feil. Eventuelt så har du gjort noe rart."
 
-#: templates/404.html:17
+#: core/templates/404.html:17
 msgid ""
 "You could go back and try one more time, or you could contact us and ask for "
 "some help if you think whatever you're looking for really should be here."
@@ -45,15 +75,15 @@ msgstr ""
 "Du kan gå tilbake og prøve en gang til, eller så kan du kontakte oss og "
 "spørre om hjelp hvis du mener at det du leter etter faktisk burde være her."
 
-#: templates/500.html:10
+#: core/templates/500.html:10
 msgid "Oops! Something unforeseen happened!"
 msgstr "Ops! Det skjedde noe rart!"
 
-#: templates/500.html:12
+#: core/templates/500.html:12
 msgid "Please go back and try again, or give up and forget about it..."
 msgstr "Vennligst gå tilbake og prøv på nytt, eller gi opp og glem det..."
 
-#: templates/500.html:13
+#: core/templates/500.html:13
 msgid ""
 "If you were doing something important or at least something that you would "
 "like to get done, you could contact the site administrators if this "
@@ -62,82 +92,148 @@ msgstr ""
 "Hvis du gjorde noe viktig eller i alle fall noe du faktisk ønsker å gjøre, "
 "så burde du kontakte oss hvis dette skjer flere ganger!"
 
-#: templates/attempts.html:12
-msgid "last attempts"
-msgstr "siste forsøk"
-
-#: templates/attempts.html:16 templates/score.html:16
-msgid "User"
-msgstr "Bruker"
-
-#: templates/attempts.html:17 templates/done.html:17 templates/score.html:18
-msgid "Time"
-msgstr "Tid"
-
-#: templates/attempts.html:18 templates/done.html:16 templates/levels.html:14
-msgid "Level"
-msgstr "Level"
-
-#: templates/attempts.html:19
-msgid "Answer"
-msgstr "Svar"
-
-#: templates/attempts.html:20
-msgid "Correct?"
-msgstr "Riktig?"
-
-#: templates/core/base.html:19
-msgid "Admin"
-msgstr "Admin"
-
-#: templates/core/base.html:19 templates/score.html:12
+#: core/templates/core/base.html:34 stats/templates/stats/score.html:12
+#: stats/templates/stats/score_list.html:11
+#: stats/templates/stats/score_list.html:20
 msgid "Score"
 msgstr "Score"
 
-#: templates/core/base.html:19
+#: core/templates/core/base.html:37
 msgid "Attempts"
 msgstr "Forsøk"
 
-#: templates/core/base.html:19
+#: core/templates/core/base.html:40
+msgid "Admin"
+msgstr "Admin"
+
+#: core/templates/core/base.html:48
 msgid "Log out"
 msgstr "Logg ut"
 
-#: templates/core/login.html:9
-msgid "Wrong username and/or password. Try again."
-msgstr "Feil brukernavn og/eller passord. Prøv på nytt."
-
-#: templates/core/login.html:13
+#: core/templates/core/login.html:8
 msgid "Hello!"
 msgstr "Hei!"
 
-#: templates/core/login.html:14
+#: core/templates/core/login.html:9
 msgid "Create an user or sign in!"
 msgstr "Opprett en bruker eller logg inn!"
 
-#: templates/core/login.html:33
+#: core/templates/core/login.html:18
 msgid "Log in"
 msgstr "Logg inn"
 
-#: templates/core/login.html:40
+#: core/templates/core/login.html:21
 msgid "Register user"
 msgstr "Registrer bruker"
 
-#: templates/done.html:8
-msgid "Done?!"
-msgstr "Ferdig?!"
+#: core/templates/core/register.html:5
+msgid "Sign up!"
+msgstr "Registrer deg!"
 
-#: templates/done.html:12
+#: core/templates/core/register.html:9
+msgid "Sign up"
+msgstr "Registrer deg"
+
+#: core/views.py:31
+msgid "Something went wrong, check the form and try again"
+msgstr "Noe gikk galt, sjekk skjemaet og prøv på nytt"
+
+#: core/views.py:35
+msgid "The passwords you entered did not match"
+msgstr "Passordene du skrev inn stemte ikke"
+
+#: core/views.py:39 core/views.py:52
+msgid "Username already exists"
+msgstr "Brukernavnet finnes allerede"
+
+#: core/views.py:55
+msgid "Invalid input"
+msgstr "Ugyldig inndata"
+
+#: levels/forms.py:7 stats/templates/stats/attempts.html:20
+msgid "Answer"
+msgstr "Svar"
+
+#: levels/templates/levels/level_list.html:18
+msgid "pts"
+msgstr "poeng"
+
+#: levels/templates/levels/level_list.html:24
+#, python-format
 msgid ""
-"You are done with this challenge. The administrators of this challenge will "
-"announce or contact the winners manually."
-msgstr ""
-"Du har gjennomført denne konkurransen. De som avholder konkurransen vil "
-"annonsere eller ta kontakt med vinnerne manuelt."
+"\n"
+"                              <p><small>Completed by %(count)s user.</"
+"small></p>\n"
+"                              "
+msgid_plural ""
+"\n"
+"                              <p><small>Completed by %(count)s users.</"
+"small></p>\n"
+"                            "
+msgstr[0] ""
+msgstr[1] ""
 
-#: templates/levels.html:46
+#: levels/templates/levels/level_list.html:32
+msgid "Do it!"
+msgstr "Gjør det!"
+
+#: levels/templates/levels/level_list.html:42
+msgid "No levels defined."
+msgstr "Ingen levels er definert."
+
+#: levels/templates/levels/levels.html:24
 msgid "Feeling lucky? ;-)"
 msgstr "Prøv lykken? ;-)"
 
-#: templates/score.html:17
+#: levels/views.py:36 levels/views.py:47
+msgid "Correct answer. Congrats!"
+msgstr "Riktig svar. Gratulerer!"
+
+#: levels/views.py:42 levels/views.py:53
+msgid "Wrong answer! Try again :-D"
+msgstr "Feil svar! Prøv på nytt :-D"
+
+#: stats/templates/stats/attempts.html:12
+msgid "last attempts"
+msgstr "nyeste forsøk"
+
+#: stats/templates/stats/attempts.html:17 stats/templates/stats/score.html:17
+#: stats/templates/stats/score_list.html:19
+msgid "User"
+msgstr "Bruker"
+
+#: stats/templates/stats/attempts.html:18 stats/templates/stats/score.html:19
+msgid "Time"
+msgstr "Tid"
+
+#: stats/templates/stats/attempts.html:19
+msgid "Level"
+msgstr "Level"
+
+#: stats/templates/stats/attempts.html:21
+msgid "Correct?"
+msgstr "Riktig?"
+
+#: stats/templates/stats/score.html:18
 msgid "Completed level"
 msgstr "Fullført level"
+
+#: stats/templates/stats/score_list.html:18
+msgid "Rank"
+msgstr ""
+
+#: stats/templates/stats/score_list.html:22
+msgid "Staff"
+msgstr ""
+
+#: stats/templates/stats/score_list.html:23
+msgid "Superuser"
+msgstr "Superbruker"
+
+#: stats/templates/stats/score_list.html:25
+msgid "Latest correct answer"
+msgstr "Nyeste riktige svar"
+
+#: stats/templates/stats/score_list.html:48
+msgid "No users registered"
+msgstr "Ingen brukere er registrert"

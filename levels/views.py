@@ -2,14 +2,13 @@
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from levels.models import Level, Score, Attempt
+from levels.models import Level, Attempt
 from levels.forms import AnswerForm
 
 
@@ -56,24 +55,6 @@ def level(request, pk):
     context["form"] = AnswerForm()
     context["attempts"] = user.userprofile.get_attempts(level)
     return render(request, "levels/levels.html", context)
-
-
-@login_required
-def done(request):
-    context = {}
-
-    try:
-        score = Score.objects.get(user=request.user)
-    except Score.DoesNotExist:
-        return HttpResponseRedirect("/")
-
-    end_level = Level.objects.latest("pk")
-    if score.max_level == end_level.pk:
-        score = Score.objects.get(user=request.user)
-        context["score"] = score
-        return render(request, "levels/done.html", context)
-    else:
-        return HttpResponseRedirect("/")
 
 
 class LevelList(LoginRequiredMixin, ListView):

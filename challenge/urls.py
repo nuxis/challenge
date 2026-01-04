@@ -11,7 +11,6 @@ import stats.views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", core.views.index, name="index"),
-    path("done/", levels.views.done, name="done"),
     path("login/", LoginView.as_view(template_name="core/login.html"), name="login"),
     path(
         "logout/",
