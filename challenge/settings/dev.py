@@ -13,6 +13,8 @@ INSTALLED_APPS += (  # noqa: F405
     "django_extensions",
 )
 
+WHITENOISE_AUTOREFRESH = True
+
 
 def show_debug_toolbar(request):
     """Show debug toolbar for all requests in development"""

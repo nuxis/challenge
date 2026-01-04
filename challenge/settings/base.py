@@ -36,6 +36,7 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, "locale/"),)
 
 MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -54,6 +55,7 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.admin",
     "django.contrib.staticfiles",
+    "whitenoise",
     "django.contrib.messages",
     "django_bootstrap5",
     "solo",
@@ -93,3 +95,5 @@ CELERY_RESULT_BACKEND = "redis://redis:6379"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+WHITENOISE_USE_FINDERS = True
