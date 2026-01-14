@@ -5,6 +5,6 @@ sqlparse
 celery[redis]
 requests
 
-psycopg2-binary
+psycopg_binary
 environs[django]
 whitenoise
